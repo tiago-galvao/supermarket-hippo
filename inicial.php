@@ -38,7 +38,9 @@
 <body>
 <section>
 
-    <div id="banner"></div>
+    <div id="banner">
+		<img src="img/banner.jpg" class="img-fluid img-responsive" alt="Banner de produtos e ofertas">
+	</div>
 
     <div id="login">
         <div class="container">
@@ -53,7 +55,10 @@
                     <input type="password" name="senha" placeholder="EX : exemplo1234"/>
                     <button>ENTRAR</button>
                     <?php
-                        echo "<br/><p> $msg </p>";
+						if($msg != 1){
+							echo "<br/><p> $msg </p>";
+						}
+                        
                     ?>
                 </form>
             </div>

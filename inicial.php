@@ -55,10 +55,9 @@
                     <input type="password" name="senha" placeholder="EX : exemplo1234"/>
                     <button>ENTRAR</button>
                     <?php
-						if($msg != 1){
-							echo "<br/><p> $msg </p>";
+						if($msg != 1 && $msgErr == 'erro'){
+							echo '<span class="login-invalido">Login inválido!</span>';
 						}
-                        
                     ?>
                 </form>
             </div>

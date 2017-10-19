@@ -154,6 +154,14 @@ header #logotipo {
 	border-color: #70252C;
 	display: block;
 }
+.login-invalido {
+    border-left: 4px solid #E00F13;
+    background-color: #FFF;
+    color: black;
+    display: block;
+    margin: 10px;
+    padding: 23px;
+}
 
 #promocoes {
 	background-color: #5E299A;

@@ -85,27 +85,6 @@ header #logotipo {
 #menu li.search .input-group {
 	top: 8px;
 }
-#banner {
-	position: relative;
-	top: -120px;
-}
-#banner h1 {
-	transition:1s;
-	color: #fff;
-	top: 300px;
-	position: relative;
-	font-size: 92px;
-	text-shadow:2px 2px 2px rgba(0, 0, 0, .45);
-	font-family: 'OpenSans-Light';
-	margin-left: 50px;
-}
-#banner h1 small {
-	font-size: 32px;
-	display: block;
-	color: #FFF;
-	font-family: 'OpenSans';
-	font-weight: bold;
-}
 
 #login{
 	background-color: #b22633;
@@ -188,6 +167,7 @@ header #logotipo {
 	color:#70252C;
 	font-family: 'OpenSans-Light';
 	font-size: 48px;
+    padding-top: 50px;
 	text-align: center;
 	width: 100%;
 }
@@ -224,26 +204,14 @@ header #logotipo {
 	margin: 0 auto;
 	max-width: 400px;
 }
-footer {
-	margin-top: 110px;
-}
-footer .row {
-	width: 100%;
-}
-footer .row p {
-	line-height: 55px;
-	margin-bottom: 0;
-}
-footer .row-cinza-claro {
+.footer{
 	height: 200px;
 	background-color: #171F26;
-	margin: auto;
 }
-footer .row-cinza-escuro {
+.footer-cinza-escuro {
 	height: 60px;
 	background-color: #11171D;
 	border-top: #242D37 1px solid;
-	margin: auto;
 }
 footer .pull-left {
 	font-family: 'OpenSans';

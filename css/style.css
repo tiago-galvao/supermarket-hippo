@@ -8,77 +8,30 @@
 	src: url("../fonts/Open_Sans/OpenSans-Light.ttf");
 	font-size: 1em;
 }
-body {
-    font: Tahoma, Arial;
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: Tahoma, Arial;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /** CSS GLOBAL **/
 .text {
     color: #fff;
 }
-
-.headline {
-    color: #fff;
+.invisivel{
+	display: none;
 }
 
 .topo {
-    background-color: #000;
-    height: 2.5rem;
-    color: #fff;
-}
-
-.item-email {
-    padding-top: 0.5rem;
-}
-
-.item-phone {
-    padding-top: 0.5rem;
-    padding-left: 5.0rem;
-}
-
-.item-redes {
-    padding-top: 0.5rem;
-    padding-left: 15.0rem;
-}
-
-.topo i.fa-envelope {
-    padding-right: 0.3rem;
-    color: #fff;
-	background-color: #b22633;
-	padding: 5px;
-	border-radius: 4px;
-}
-
-.topo i.fa-phone {
-    padding-right: 0.3rem;
-    color: #fff;
-	background-color: #b22633;
-	padding: 5px 6px;
-	border-radius: 4px;
-}
-
-.topo i.fa-facebook-square {
-    color: #fff;
-}
-
-.topo i.fa-facebook-square:hover {
-    color: #b22633;
-}
-
-.topo i.fa-linkedin-square {
-    color: #fff;
-}
-
-.topo i.fa-linkedin-square:hover {
-    color: #b22633;
-}
-
-.topo a {
-	text-decoration: none;
-}
-
-.topo span.text-email {
-	color: #b22633;
+	background-color: #fae2b2;
+	height: 45px;
+	color: #5a1e23;
+	font-size: 25px;
+	text-align: center;
 }
 
 /** Header **/
@@ -86,10 +39,12 @@ body {
 .header {
     background-color: #5a1e23;
     height: 60px;
+	position: relative;
     
 }
 .menu {
-	margin: 12px 0;
+	overflow: hidden;
+	width: 100%;
 }
 .menu li {
 	display: inline-block;
@@ -138,6 +93,54 @@ body {
 	top: 8px;
 }
 
+#main{
+	position: absolute;
+	top: 18px;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition: 300ms ease all;
+	-transition: 300ms ease all;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+.show-nav #main{
+	-webkit-transform: translateX(300px);
+	transform: translateX(300px);
+	-webkit-transform: translate3d(300px,0,0);
+	transform: translate3d(300px,0,0);
+}
+#nav{
+	width: 300px;
+	height: auto;
+	position: absolute;
+	top: -18px;
+	left: -315px;
+	background-color: #fae2b2;
+	color: #5a1e23;
+	border: 1px solid;
+	padding: 28px;
+}
+
+btn-close{
+	color: #FFFFFF;
+	font-size: 25px;
+	border: 2px solid #FFFFFF;
+	padding: 1px 11px 4px 10px;
+	width: 38px;
+	margin-bottom: 20px;
+	display: block;
+	border-radius: 50px;
+	text-decoration: none;
+}
+.content{
+	border: 2px solid #fae2b2;
+	border-radius: 16px;
+	padding: 0 25px;
+	cursor: pointer;
+	color: #fae2b2;
+}
 
 /** MENU FIXO **/
 
@@ -156,10 +159,9 @@ body {
 
 /** FORMULARIO **/
 
-form .button
-			{
-				font-size: 1.4em;
-			}
+form .button{
+	font-size: 1.4em;
+}
 		
 form input.text, form select, form textarea {
 	position: relative;
@@ -207,7 +209,6 @@ form textarea {
     min-width: 17.5rem;
 }
 
-
 #newsletter	{
 	overflow: hidden;
 	padding: 2em 0em 2em 0em;
@@ -220,11 +221,24 @@ form textarea {
 	
 #newsletter .title h2 {
 	color: #fff;
+	display: inline;
+	margin: 0px 25px;
+	right: 4em;
+	position: relative;
 }
-	
+#newsletter .title h2 a{
+	color: #FFFFFF;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 #newsletter .content {
 	width: 45%;
 	margin: 0px auto;
+}
+
+.form-selected{
+	border-bottom: 2px solid;
 }
 
 .btn-custom {
@@ -234,6 +248,7 @@ form textarea {
     font-size: 1rem;
     min-width: 17.5rem;
     cursor: pointer;
+	margin-bottom: 10px;
 }
 
 .btn-custom:hover {
@@ -438,13 +453,6 @@ footer .list-socials i {
     
    .navbar-collapse a:hover {
         color: #b22633;
-    }
-    
-    i.fa-bars {
-        position: relative;
-        z-index: 2;
-        cursor: pointer;
-        color: #000;
     }
     
 }

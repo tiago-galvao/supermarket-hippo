@@ -1,8 +1,50 @@
-<?php header("Content-type: text/html; charset=utf-8"); ?>
+﻿<?php header("Content-type: text/html; charset=utf-8"); ?>
 
 <?php
 include('../db/bancodedados.php');
 include('../auth/controle.php');
+
+//Funcionalidade Listar
+$q = odbc_exec($db, '	SELECT 	idUsuario, loginUsuario,
+								nomeUsuario, tipoPerfil, 
+								usuarioAtivo
+						FROM 
+								Usuario');
+
+while($r = odbc_fetch_array($q)){
+	
+	$usuarios[$r['idUsuario']] = $r;
+	
+}
+
+//Funcionalidade Gravar Cadastro
+if(isset($_POST['btnGravar'])){
+	unset($_GET['cadastrar']);
+	if(	!empty($_POST['loginUsuario']) &&
+		!empty($_POST['nomeUsuario']) &&
+		!empty($_POST['senhaUsuario'])) {
+		
+		$_POST['usuarioAtivo'] = isset($_POST['usuarioAtivo']) ? true : false;
+
+		$_POST['nomeUsuario'] = utf8_decode($_POST['nomeUsuario']);
+		
+		$stmt = odbc_prepare($db, "	INSERT INTO Usuario (loginUsuario, nomeUsuario, senhaUsuario, tipoPerfil, usuarioAtivo) VALUES (?,?,?,?,?)");
+
+		if(odbc_execute($stmt, array($_POST['loginUsuario'], $_POST['nomeUsuario'], $_POST['senhaUsuario'], $_POST['perfilUsuario'], $_POST['usuarioAtivo'],))){
+			$msg = 'Usuário gravado com sucesso!';	
+
+		} else {
+			$erro = 'Erro ao gravar o usuário';
+		}								
+							
+	} else {
+		
+		$erro = 'Os campos: Login, Nome e Senha 
+					são obrigatórios';
+		
+	}
+}
+
 
 //Funcionalidade Editar Cadastro
 if(isset($_POST['btnAtualizar'])){
@@ -45,35 +87,6 @@ if(isset($_POST['btnAtualizar'])){
 }
 
 
-//Funcionalidade Gravar Cadastro
-if(isset($_POST['btnGravar'])){
-	unset($_GET['cadastrar']);
-	if(	!empty($_POST['loginUsuario']) &&
-		!empty($_POST['nomeUsuario']) &&
-		!empty($_POST['senhaUsuario'])) {
-		
-		$_POST['usuarioAtivo'] = isset($_POST['usuarioAtivo']) ? true : false;
-
-		$_POST['nomeUsuario'] = utf8_decode($_POST['nomeUsuario']);
-		
-		$stmt = odbc_prepare($db, "	INSERT INTO Usuario (loginUsuario, nomeUsuario, senhaUsuario, tipoPerfil, usuarioAtivo) VALUES (?,?,?,?,?)");
-
-		if(odbc_execute($stmt, array($_POST['loginUsuario'], $_POST['nomeUsuario'], $_POST['senhaUsuario'], $_POST['perfilUsuario'], $_POST['usuarioAtivo'],))){
-			$msg = 'Usuário gravado com sucesso!';	
-
-		} else {
-			$erro = 'Erro ao gravar o usuário';
-		}								
-							
-	} else {
-		
-		$erro = 'Os campos: Login, Nome e Senha 
-					são obrigatórios';
-		
-	}
-}
-
-
 //Exclui Usuario 
 
 if(isset($_GET['excluir'])){
@@ -95,55 +108,19 @@ if(isset($_GET['excluir'])){
 }
 
 
-//Funcionalidade Listar
-$q = odbc_exec($db, '	SELECT 	idUsuario, loginUsuario,
-								nomeUsuario, tipoPerfil, 
-								usuarioAtivo
-						FROM 
-								Usuario');
+//Funcionalidades Categorias 
 
-while($r = odbc_fetch_array($q)){
+//Listando Categoria
+$c = odbc_exec($db, 'SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria');
+
+while($rc = odbc_fetch_array($c)){
 	
-	$usuarios[$r['idUsuario']] = $r;
+	$rc['nomeCategoria'] = utf8_encode($rc['nomeCategoria']);
+
+	$categorias[$rc['idCategoria']] = $rc;
+
 	
 }
-
-
-///////////////////////////////////////////////////////////////////////////////Funcionalidades Categorias\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-//Funcionalidade Editar Cadastro
-
-if(isset($_POST['btnAttC'])){
-	unset($_GET['editarCategoria']);
-	if(	!empty($_POST['nomeCategoria']) ){
-		
-        $_POST['nomeCategoria'] = utf8_decode($_POST['nomeCategoria']);
-        $_POST['descCategoria'] = utf8_decode($_POST['descCategoria']);
-		
-			$stmt = odbc_prepare($db, "	UPDATE 
-											Categoria
-										SET 
-											nomeCategoria = ?,
-											descCategoria = ?
-										WHERE
-											idCategoria = ?");
-									
-        if(odbc_execute($stmt, array(	$_POST['nomeCategoria'],
-											$_POST['descCategoria'],
-											$_POST['idCategoria']))){
-			$msg = 'Categoria atualizada com sucesso!';			
-		} else {
-			$erro = 'Erro ao atualizar a categoria';
-		}								
-							
-	} else{
-		
-		$erro = 'Os campos: Login, Nome e Senha 
-					são obrigatórios';
-		
-	}
-}
-
 
 //Cadastrar Nova Categoria
 if(isset($_POST['btnAdd'])){
@@ -168,6 +145,55 @@ if(isset($_POST['btnAdd'])){
 	}
 }
 
+//Funcionalidade Editar Cadastro
+if(isset($_POST['btnAtualizar'])){
+		unset($_GET['editarCategoria']);
+		if(	!empty($_POST['nomeCategoria']) ){
+						
+			$_POST['nomeCategoria'] = utf8_decode($_POST['nomeCategoria']);
+			$_POST['descCategoria'] = utf8_decode($_POST['descCategoria']);
+			$stmt = odbc_prepare($db, "	UPDATE 
+											Categoria
+										SET 
+											nomeCategoria = ?,
+											descCategoria = ?
+										WHERE
+											idCategoria = ?");
+										
+			if(odbc_execute($stmt, array(	$_POST['nomeCategoria'],
+											$_POST['descCategoria'],
+											$_POST['idCategoria']))){
+				$msg = 'Categoria atualizada com sucesso!';			
+			}else{
+				$erro = 'Erro ao atualizar a categoria';
+			}
+} else{
+		
+			$erro = 'Erro ao atualizar a categoria';
+		
+		}
+	}
+
+
+//Excluir Categoria
+if(isset($_GET['excluir'])){
+
+	if(is_numeric($_GET['excluir'])){
+		
+		if(odbc_exec($db, "	DELETE FROM 
+								Categoria 
+							WHERE
+								idCategoria = {$_GET['excluir']}")){
+			$msg = 'Usuário removido com sucesso';						
+		}else{
+			$erro = 'Erro ao excluir o usuário';
+		}
+		
+	}else{
+		$erro = 'Código inválido';
+	}
+}
+
 //Exibir produtos chave estrangeira
 
 $p = odbc_exec($db, 'SELECT p.idProduto, p.nomeProduto, p.descProduto, p.precProduto, p.descontoPromocao, p.idCategoria, p.ativoProduto, p.idUsuario, p.qtdMinEstoque, p.imagem FROM Produto as p, Categoria as c WHERE c.idCategoria = p.idCategoria');
@@ -182,39 +208,6 @@ while($rp = odbc_fetch_array($p)){
 
 //
 
-
-//Excluir Categoria
-if(isset($_GET['excluir'])){
-
-	if(is_numeric($_GET['excluir'])){
-	
-			if(odbc_exec($db, "	DELETE FROM 
-									Categoria 
-								WHERE
-									idCategoria = {$_GET['excluir']}")){
-				$msg = 'Usuário removido com sucesso';						
-			}else{
-				$erro = 'Erro ao excluir o usuário';
-			}
-        
-	}else{
-		$erro = 'Código inválido';
-	}
-}
-
-//Listando Categoria
-$c = odbc_exec($db, 'SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria');
-
-while($rc = odbc_fetch_array($c)){
-	
-	$rc['nomeCategoria'] = utf8_encode($rc['nomeCategoria']);
-
-	$categorias[$rc['idCategoria']] = $rc;
-
-	
-}
-
-
 if(isset($_GET['cadastrar'])){//FORM Cadastrar
 
 	include('usuarios/template_cadastrar.php');
@@ -226,7 +219,6 @@ if(isset($_GET['cadastrar'])){//FORM Cadastrar
 								FROM Usuario 
 								WHERE idUsuario = {$_GET['editar']}");
 		$dados_usuario = odbc_fetch_array($q);
-		$dados_usuario['nomeUsuario'] = utf8_encode($dados_usuario['nomeUsuario']);
 
 	}else{
 		$erro = 'Código inválido';
@@ -241,8 +233,6 @@ if(isset($_GET['cadastrar'])){//FORM Cadastrar
 								FROM Categoria 
 								WHERE idCategoria = {$_GET['editarCategoria']}");
 		$dados_categoria = odbc_fetch_array($c);
-		$dados_categoria['nomeCategoria'] = utf8_encode($dados_categoria['nomeCategoria']);
-		$dados_categoria['descCategoria'] = utf8_encode($dados_categoria['descCategoria']);
 	} else {
 		$erro = 'Código inválido';
 	}

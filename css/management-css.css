@@ -1,0 +1,84 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	    background-color: #e9ebee !important;
+	top: 0;
+}
+
+
+.topBar{
+	background-color: #FFFFFF;
+    width: 100vw;
+    height: 65px;
+    position: relative;
+	box-shadow: 0px 6px 25px #888888;
+}
+
+
+.container-fluid{
+    padding: 11px;
+}
+
+.item-topBar{
+    left: 15rem;
+}
+
+.sideBar{
+    width: 170px;
+    height: 100vh;
+	left: 0px;
+    top: 100px;
+    position: fixed;
+}
+
+.sideBar a{
+	display: block;
+    text-align: center;
+    margin: 30px 0px;
+}
+
+.box-container{
+	background-color: #FFFFFF;
+    width: 75%;
+    height: 60px;
+    left: 18%;
+    top: 50px;
+    position: relative;
+    margin: 10px 20px;
+	box-shadow: 0px 6px 25px #888888;
+    border-radius: 5px;
+	
+}
+
+
+.box-container form input{
+    border: none;
+    text-align: center;
+    margin: 26px 17px;
+    display: inline;
+}
+
+.box-container form button{
+    float: right;
+    margin: 11px 16px;
+}
+
+
+.box-container form #NomeSpan{
+    display: block;
+    margin: 7px 76px;
+    padding: 0;
+    position: absolute;
+    font-size: 12px;
+}
+
+.box-container form #DescSpan{
+    display: block;
+    margin: 7px 233px;
+    padding: 0;
+    position: absolute;
+    font-size: 12px;
+}

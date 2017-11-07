@@ -40,7 +40,7 @@
                     <?php
                     session_start();
                     if (isset($_SESSION['login'])) {
-                        echo "<a id=\"configuracao\" href=\"/structure/config-user-not-admin.php\" class=\"btn btn-yellow\"  style=\"margin: 4px;left: 26em;position: relative;\">CONFIGURAÇÕES</a>";
+                        echo ">CONFIGURAÇÕES</a>";
                     }
                     ?>
                     <?php

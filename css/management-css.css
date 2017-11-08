@@ -53,12 +53,19 @@ body{
 	
 }
 
+.propreties-itens{
+	display: inline;
+    position: relative;
+    float: left;
+}
+
 
 .box-container form input{
     border: none;
-    text-align: center;
-    margin: 26px 17px;
+    text-align: left;
+    margin: 7px 17px;
     display: inline;
+	padding: 0px 21px;
 }
 
 .box-container form button{
@@ -67,18 +74,10 @@ body{
 }
 
 
-.box-container form #NomeSpan{
+.box-container form span{
     display: block;
-    margin: 7px 76px;
-    padding: 0;
-    position: absolute;
-    font-size: 12px;
-}
-
-.box-container form #DescSpan{
-    display: block;
-    margin: 7px 233px;
-    padding: 0;
-    position: absolute;
+    padding: 0px 38px;
+    position: relative;
+    top: 8px;
     font-size: 12px;
 }

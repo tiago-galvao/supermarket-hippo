@@ -8,7 +8,7 @@
                 <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
             </div>
         </div>
-        <div class="item-topBar col-sm-4 col-md-4 col-lg-4">
+        <div class="item-topBar">
             <img src="..." alt="..." class="rounded-circle">
             <button type="button" class="btn btn-outline-danger">SAIR</button>
         </div>

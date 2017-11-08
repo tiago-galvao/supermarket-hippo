@@ -6,7 +6,8 @@ $password = "SistemasInternet123";
 $conninfo = array("Database" => $db, "UID" => $user, "PWD" => $password);
 
 if (!$conn = sqlsrv_connect($dbhost, $conninfo)) {
-	echo "Erro ao conectar ao banco de dados";
+	//die("Erro ao conectar ao banco de dados");
+	header("Location: page/error.php?msg=Erro ao conectar ao banco de dados");
 }
 
 ?>

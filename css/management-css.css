@@ -85,3 +85,10 @@ body{
     top: 8px;
     font-size: 12px;
 }
+
+.selector {
+    color: red;
+    background: #D1CDCD;
+    font-weight: bold;
+    font-family: Helvetica;
+}

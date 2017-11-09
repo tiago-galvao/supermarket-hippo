@@ -8,10 +8,13 @@ body{
 	top: 0;
 }
 
+.row{
+    margin: 0;
+}
 
 .topBar{
 	background-color: #FFFFFF;
-    width: 100vw;
+    width: 1;
     height: 65px;
     position: relative;
 	box-shadow: 0px 6px 25px #888888;
@@ -23,7 +26,8 @@ body{
 }
 
 .item-topBar{
-    left: 15rem;
+    position: relative;
+    left: 330px;
 }
 
 .sideBar{
@@ -63,7 +67,7 @@ body{
 .box-container form input{
     border: none;
     text-align: left;
-    margin: 7px 17px;
+    margin: 7px 11px;
     display: inline;
 	padding: 0px 21px;
 }
@@ -76,7 +80,7 @@ body{
 
 .box-container form span{
     display: block;
-    padding: 0px 38px;
+    padding: 0px 31px;
     position: relative;
     top: 8px;
     font-size: 12px;

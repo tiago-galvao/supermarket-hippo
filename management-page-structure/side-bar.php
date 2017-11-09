@@ -1,5 +1,5 @@
-<div class="sideBar">
-    <a>Usuários</a>
+﻿<div class="sideBar">
+    <a class="selector">Usuários</a>
     <a>Produtos</a>
     <a>Categorias</a>
 </div>

@@ -1,5 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hippo Supermarket</title>
+    <?php include('../main-page-structure/links.php') ?>
+</head>
+<body>
+
+<?php include ('../management-page-structure/top-bar.php'); ?>
+
+<div class="sideBar">
+    <a href="user-management.php">Usuários</a>
+    <a href="product-management.php">Produtos</a>
+    <a class="selector" >Categorias</a>
+</div>
+
 <?php
-include('/db/bancodedados.php');
+include('../db/bancodedados.php');
 
     try {
         $instrucaoSQL = "SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria";
@@ -39,3 +57,7 @@ include('/db/bancodedados.php');
       <?php
     }
 ?>
+
+<?php include('../main-page-structure/import-javascript.php') ?>
+</body>
+</html>

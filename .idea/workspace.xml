@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62d40202-7aed-4447-b8aa-2fcba4f8154d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/code/categoria/category-update.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/code/categoria/category-deletef.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code/categoria/category-delete.php" afterPath="$PROJECT_DIR$/code/categoria/category-delete.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/management-css.css" afterPath="$PROJECT_DIR$/css/management-css.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management-page-structure/category-user-management.php" afterPath="$PROJECT_DIR$/management-page-structure/category-user-management.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management-page-structure/product-management.php" afterPath="$PROJECT_DIR$/management-page-structure/product-management.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management-page-structure/top-bar.php" afterPath="$PROJECT_DIR$/management-page-structure/top-bar.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management-page-structure/user-management.php" afterPath="$PROJECT_DIR$/management-page-structure/user-management.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/svg/garbage.svg" afterPath="$PROJECT_DIR$/svg/garbage.svg" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,11 +28,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d8302a6e-4e8f-4988-8c66-083b69f8acc3/console.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="22" />
+              <caret line="0" column="79" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="product-management.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/management-page-structure/product-management.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+              <folding>
+                <marker date="1510605090235" expanded="true" signature="1264:1327" ph="SELECT idCat... Categoria" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="management-css.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/management-css.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="57" column="20" lean-forward="false" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -57,13 +74,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/management-page-structure/top-bar.php" />
-        <option value="$PROJECT_DIR$/management-page-structure/user-management.php" />
-        <option value="$PROJECT_DIR$/management-page-structure/product-management.php" />
-        <option value="$PROJECT_DIR$/css/management-css.css" />
-        <option value="$PROJECT_DIR$/management-page-structure/category-user-management.php" />
         <option value="$PROJECT_DIR$/code/categoria/category-update.php" />
         <option value="$PROJECT_DIR$/code/categoria/category-delete.php" />
+        <option value="$PROJECT_DIR$/management-page-structure/category-user-management.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/d8302a6e-4e8f-4988-8c66-083b69f8acc3/console.sql" />
+        <option value="$PROJECT_DIR$/css/management-css.css" />
+        <option value="$PROJECT_DIR$/management-page-structure/user-management.php" />
+        <option value="$PROJECT_DIR$/management-page-structure/product-management.php" />
       </list>
     </option>
   </component>
@@ -115,6 +132,16 @@
               <item name="supermarket-hippo" type="462c0819:PsiDirectoryNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="categoria" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="supermarket-hippo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supermarket-hippo" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="supermarket-hippo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="supermarket-hippo" type="462c0819:PsiDirectoryNode" />
+              <item name="management-page-structure" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -246,12 +273,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1510588134850</updated>
-      <workItem from="1510588136964" duration="8693000" />
+      <workItem from="1510588136964" duration="13943000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8693000" />
+    <option name="totallyTimeSpent" value="13943000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -268,7 +295,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13859275" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -297,31 +324,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/management-page-structure/product-management.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="74" column="7" lean-forward="false" selection-start-line="74" selection-start-column="7" selection-end-line="74" selection-end-column="7" />
-          <folding>
-            <marker date="1510590604161" expanded="true" signature="978:1041" ph="SELECT idCat... Categoria" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/code/categoria/category-deletef.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/management-page-structure/user-management.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="66" column="14" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="74" selection-end-column="7" />
-          <folding>
-            <marker date="1510589921282" expanded="true" signature="978:1041" ph="SELECT idCat... Categoria" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -350,24 +357,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/management-page-structure/category-user-management.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="36" column="55" lean-forward="true" selection-start-line="36" selection-start-column="55" selection-end-line="36" selection-end-column="55" />
-          <folding>
-            <marker date="1510592811464" expanded="true" signature="978:1041" ph="SELECT idCat... Categoria" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/management-css.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="767">
-          <caret line="95" column="1" lean-forward="false" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/management-page-structure/top-bar.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -376,11 +365,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/management-page-structure/category-user-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="23" lean-forward="false" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding>
+            <marker date="1510602650492" expanded="true" signature="1264:1327" ph="SELECT idCat... Categoria" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/management-css.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="57" column="20" lean-forward="false" selection-start-line="57" selection-start-column="20" selection-end-line="57" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management-page-structure/user-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="48" column="12" lean-forward="true" selection-start-line="48" selection-start-column="12" selection-end-line="77" selection-end-column="19" />
+          <folding>
+            <marker date="1510604447783" expanded="true" signature="1264:1356" ph="SELECT idCat... Categoria" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/d8302a6e-4e8f-4988-8c66-083b69f8acc3/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="22" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="22" />
+          <caret line="0" column="79" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="92" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/management-page-structure/product-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="48" column="20" lean-forward="false" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="20" />
+          <folding>
+            <marker date="1510605090235" expanded="true" signature="1264:1327" ph="SELECT idCat... Categoria" />
+          </folding>
         </state>
       </provider>
     </entry>

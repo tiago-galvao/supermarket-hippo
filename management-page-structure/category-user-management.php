@@ -15,16 +15,16 @@
         <div class="body-project--sidebar">
             <dl>
                 <dt>Usuários</dt>
-                <dd>Gerenciamento de usuários</dd>
-                <dd>Adiconar novo usuário</dd>
+                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuários</a></dd>
+                <dd class="body-project--au">Adiconar novo usuário</dd>
 
                 <dt>Categorias</dt>
-                <dd>Gerenciamento de categorias</dd>
-                <dd>Adiconar nova categoria</dd>
+                <dd class="body-project--gc"><a class="link-selected" href="category-user-management.php">Gerenciamento de categorias</a></dd>
+                <dd class="body-project--ac">Adiconar nova categoria</dd>
 
                 <dt>Produtos</dt>
-                <dd>Gerenciamento de produtos</dd>
-                <dd>Adiconar novo produto</dd>
+                <dd class="body-project--gp"><a href="product-management.php">Gerenciamento de produtos</a></dd>
+                <dd class="body-project--ap">Adiconar novo produto</dd>
             </dl>
         </div>
 

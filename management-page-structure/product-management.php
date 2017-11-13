@@ -15,16 +15,16 @@
         <div class="body-project--sidebar">
             <dl>
                 <dt>Usuários</dt>
-                <dd>Gerenciamento de usuários</dd>
-                <dd>Adiconar novo usuário</dd>
+                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuários</a></dd>
+                <dd class="body-project--au">Adiconar novo usuário</dd>
 
                 <dt>Categorias</dt>
-                <dd>Gerenciamento de categorias</dd>
-                <dd>Adiconar nova categoria</dd>
+                <dd class="body-project--gc"><a href="category-user-management.php">Gerenciamento de categorias</a></dd>
+                <dd class="body-project--ac">Adiconar nova categoria</dd>
 
                 <dt>Produtos</dt>
-                <dd>Gerenciamento de produtos</dd>
-                <dd>Adiconar novo produto</dd>
+                <dd class="body-project--gp"><a class="link-selected" href="product-management.php">Gerenciamento de produtos</a></dd>
+                <dd class="body-project--ap">Adiconar novo produto</dd>
             </dl>
         </div>
 
@@ -45,26 +45,8 @@
             $categorias[1] = utf8_encode((empty($categorias[1])) ? "Sem dados" : $categorias[1]);
             $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
             ?>
-            <div class="row body-project--boxinfo">
-                <form class="body-project--form" method='post'>
-                    <div class='propreties-itens '>
-                        <span class="lead body-project--title">Id</span>
-                        <input type='text' value='<?=$categorias[0];?>' name='id'/>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Nome</span>
-                        <input type='text' value='<?=$categorias[1];?>' name='nome'/>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Descrição</span>
-                        <input type='text' value='<?=$categorias[2];?>' name='desc'/>
-                    </div>
-                    <div class="body-project--formbuttons">
-                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='teste.php' />
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='teste.php' >
-                    </div>
-                </form>
-            </div>
+
+                    
             <?php
         }
         ?>

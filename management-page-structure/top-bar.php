@@ -1,16 +1,18 @@
-<section class="container-fluid topBar">
-    <div class="row">
-        <div class="col-sm-4 col-md-4 col-lg-4">
-            <img src="..." alt="..." class="rounded-circle">
+<header class="header-navbar">
+
+    <div class="container-fluid">
+        <div class="header-navbar--logo">
+            <img src="..." class="img-fluid" alt="Responsive image">
         </div>
-        <div class="col-sm-4 col-md-4 col-lg-4">
+        <div class="header-navbar--searchfor">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+                <input type="text" class="form-control" placeholder="Pesquise por.." aria-label="Search for...">
             </div>
         </div>
-        <div class="item-topBar">
-            <img src="..." alt="..." class="rounded-circle">
-            <button type="button" class="btn btn-outline-danger">SAIR</button>
+        <div class="header-navbar--itens">
+            <p class="header-navbar--user">Tiago Galvão </p>
+            <button type="button" class="btn btn-danger">Sair</button>
         </div>
     </div>
-</section>
+
+</header>

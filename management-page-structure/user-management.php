@@ -10,54 +10,66 @@
 
 <?php include ('../management-page-structure/top-bar.php'); ?>
 
-<div class="sideBar">
-    <a class="selector">Usu·rios</a>
-    <a href="product-management.php">Produtos</a>
-    <a href="category-user-management.php">Categorias</a>
-</div>
+<div class="container-fluid">
+    <div class="body-project">
+        <div class="body-project--sidebar">
+            <dl>
+                <dt>Usu√°rios</dt>
+                <dd>Gerenciamento de usu√°rios</dd>
+                <dd>Adiconar novo usu√°rio</dd>
 
-<?php
-include('../db/bancodedados.php');
+                <dt>Categorias</dt>
+                <dd>Gerenciamento de categorias</dd>
+                <dd>Adiconar nova categoria</dd>
 
-    try {
-        $instrucaoSQL = "SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria";
-        $consulta = sqlsrv_query($conn, $instrucaoSQL);
-        $numRegistros = sqlsrv_num_rows($consulta);
+                <dt>Produtos</dt>
+                <dd>Gerenciamento de produtos</dd>
+                <dd>Adiconar novo produto</dd>
+            </dl>
+        </div>
 
-    } catch (Exception $e) {
-        die($e);
-    }
+        <?php
+        include('../db/bancodedados.php');
 
-    while ($categorias = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
+        try {
+            $instrucaoSQL = "SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria";
+            $consulta = sqlsrv_query($conn, $instrucaoSQL);
+            $numRegistros = sqlsrv_num_rows($consulta);
+
+        } catch (Exception $e) {
+            die($e);
+        }
+
+        while ($categorias = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
 
         $categorias[1] = utf8_encode((empty($categorias[1])) ? "Sem dados" : $categorias[1]);
         $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
         ?>
-        <div class='row'>
-            <div class='box-container'>
-                <form method='post'>
-                    <div class='propreties-itens'>
-                        <span>Id</span>
-                        <input type='text' value='<?=$categorias[0];?>' name='id'/>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span>Nome</span>
-                        <input type='text' value='<?=$categorias[1];?>' name='nome'/>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span>DescriÁ„o</span>
-                        <input type='text' value='<?=$categorias[2];?>' name='desc'/>
-                    </div>
-                    <? $jsonCategoria = htmlspecialchars(json_encode($categorias, JSON_FORCE_OBJECT)); ?>
-                    <button class='btn btn-outline-danger' type='submit' formaction='/code/categoria/category-delete.php'>Deletar</button>
-                    <button class='btn btn-outline-secondary' type='button' onClick='acaoEditar()'>Editar</button>
-                </form>
-            </div>
+        <div class="row body-project--boxinfo">
+            <form class="body-project--form" method='post'>
+                <div class='propreties-itens '>
+                    <span class="lead body-project--title">Id</span>
+                    <input type='text' value='<?=$categorias[0];?>' name='id'/>
+                </div>
+                <div class='propreties-itens'>
+                    <span class="lead body-project--title">Nome</span>
+                    <input type='text' value='<?=$categorias[1];?>' name='nome'/>
+                </div>
+                <div class='propreties-itens'>
+                    <span class="lead body-project--title">Descri√ß√£o</span>
+                    <input type='text' value='<?=$categorias[2];?>' name='desc'/>
+                </div>
+                <div class="body-project--formbuttons">
+                    <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='teste.php' />
+                    <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='teste.php' >
+                </div>
+            </form>
         </div>
-      <?php
+    <?php
     }
-?>
+    ?>
 
+</div>
 <?php include('../main-page-structure/import-javascript.php') ?>
 </body>
 </html>

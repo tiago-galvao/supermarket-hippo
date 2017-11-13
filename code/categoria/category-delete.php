@@ -1,6 +1,6 @@
 <?php
 
-include('../../db/bancodedadosOdbc.php');
+include('../../db/bancodedados.php');
 
 $id = $_POST['id'];
 $nome = $_POST['nome'];
@@ -11,25 +11,26 @@ echo "<script>
     }
 </script>";
 
-$deletar = "<script>document.write(deletar);</script>";	
+$deletar = "<script>document.write(deletar);</script>";
 
 try {
-	if ($deletar == 'true') {
-		if(odbc_exec($db, "DELETE FROM Categoria WHERE idCategoria = {$id}")){
-			echo "<script> console.log('EXECUTOU ');</script>";
-				$msg = 'Usuário removido com sucesso';
-				header('Location: /supermarket-hippo/');						
-			}else{
-				echo "<script> console.log('NAO EXECUTOU ');</script>";
-				$erro = 'Erro ao excluir o usuário';
+    if ($deletar == true) {
+        $instrucaoSQL = "DELETE FROM Categoria WHERE idCategoria = ?";
+        $params = array( $id );
+        $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
+        $rows_affected = sqlsrv_rows_affected($consulta);
 
-			}
-			var_dump(odbc_error());
-	}
+        if($rows_affected > 0){
+            $msg = 'Categoria deletada com sucesso';
+            header('Location: /management-page-structure/category-user-management.php');
+        }else{
+            $erro = 'Erro ao deletar o usuário';
+            die( print_r( sqlsrv_errors(), true));
+        }
+    }
 
 } catch (Exception $e) {
     echo "<script> console.log('ERRO'); </script>";
     die($e);
 }
-
 ?>

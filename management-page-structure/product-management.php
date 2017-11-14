@@ -11,12 +11,12 @@
 <?php include ('../management-page-structure/top-bar.php'); ?>
 
 <div class="container-fluid">
-    <div class="body-project">
+    <div class="body-project--product">
         <div class="body-project--sidebar">
             <dl>
-                <dt>Usuários</dt>
-                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuários</a></dd>
-                <dd class="body-project--au">Adiconar novo usuário</dd>
+                <dt>UsuÃ¡rios</dt>
+                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuÃ¡rios</a></dd>
+                <dd class="body-project--au">Adiconar novo usuÃ¡rio</dd>
 
                 <dt>Categorias</dt>
                 <dd class="body-project--gc"><a href="category-user-management.php">Gerenciamento de categorias</a></dd>
@@ -45,10 +45,37 @@
             $categorias[1] = utf8_encode((empty($categorias[1])) ? "Sem dados" : $categorias[1]);
             $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
             ?>
+            <form class="row body-project--boxproduct" method='post'>
+                <div class="body-project--form">
+                    <div class='propreties-itens'>
+                        <span class="lead body-project--title">Id</span>
+                        <input class="propreties-itens--inputid" type='text' value='<?=$categorias[0];?>' name='id'/>
+                    </div>
+                    <div class='propreties-itens'>
+                        <span class="lead body-project--title">Nome</span>
+                        <input type='text' value='<?=$categorias[1];?>' name='nome'/>
+                    </div>
+                </div>
+                <div class='body-project--formimage'>
 
-                    
-            <?php
-        }
+                </div>
+                <div class="body-project--form">
+                    <div class='propreties-itens'>
+                        <span class="lead body-project--title">Id</span>
+                        <input class="propreties-itens--inputid" type='text' value='<?=$categorias[0];?>' name='id'/>
+                    </div>
+                    <div class='propreties-itens'>
+                        <span class="lead body-project--title">Nome</span>
+                        <input type='text' value='<?=$categorias[1];?>' name='nome'/>
+                    </div>
+                    <div class="body-project--formbuttons">
+                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='teste.php' />
+                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='teste.php' >
+                    </div>
+                </div>
+            </form>
+        <?php
+            }
         ?>
 
     </div>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 include('../../db/bancodedados.php');
 
@@ -22,11 +22,13 @@ try {
 
         if($rows_affected > 0){
             $msg = 'Categoria deletada com sucesso';
-            header('Location: /management-page-structure/category-user-management.php');
+			echo "<script> window.location.href = '/management-page-structure/category-user-management.php' </script>";	
+            
         }else{
             $erro = 'Erro ao deletar o usuário';
             die( print_r( sqlsrv_errors(), true));
         }
+
     }
 
 } catch (Exception $e) {

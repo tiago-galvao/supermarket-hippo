@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62d40202-7aed-4447-b8aa-2fcba4f8154d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata.keystream" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata.keystream" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata.keystream.len" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata.keystream.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata.len" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata_i" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata_i" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata_i.len" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3/_metadata_/metadata_i.len" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/d8302a6e-4e8f-4988-8c66-083b69f8acc3.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/management-css.css" afterPath="$PROJECT_DIR$/css/management-css.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/management-page-structure/product-management.php" afterPath="$PROJECT_DIR$/management-page-structure/product-management.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +27,8 @@
       <file leaf-file-name="management-css.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/management-css.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+            <state relative-caret-position="1300">
+              <caret line="88" column="34" lean-forward="true" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -280,12 +271,12 @@
       <option name="presentableId" value="Default" />
       <updated>1510588134850</updated>
       <workItem from="1510588136964" duration="16654000" />
-      <workItem from="1510667290437" duration="8458000" />
+      <workItem from="1510667290437" duration="10132000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25112000" />
+    <option name="totallyTimeSpent" value="26786000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1096" extended-state="6" />
@@ -300,9 +291,9 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298647" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18496802" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19616205" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -423,8 +414,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/management-css.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="75" column="20" lean-forward="false" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
+        <state relative-caret-position="1300">
+          <caret line="88" column="34" lean-forward="true" selection-start-line="88" selection-start-column="34" selection-end-line="88" selection-end-column="34" />
           <folding />
         </state>
       </provider>

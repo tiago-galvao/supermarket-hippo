@@ -30,12 +30,12 @@ if ($conn) {
             $_SESSION['tipoUsuario'] = $dadosUsuario["tipoPerfil"];
             $_SESSION['idUser'] = $dadosUsuario["idUsuario"];
             $_SESSION['senhaUser'] = $dadosUsuario["senhaUsuario"];
-            header('Location: http://servidor-php-nla.azurewebsites.net');
+            header('Location: /management-page-structure/user-management.php');
         }
     }
 } else {
     $msg = "Erro inesperado";
-    header('Location: http://servidor-php-nla.azurewebsites.net');
+    header('Location: /management-page-structure/user-management.php');
 }
 
 ?>

@@ -16,15 +16,12 @@
             <dl>
                 <dt>Usuários</dt>
                 <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuários</a></dd>
-                <dd class="body-project--au">Adiconar novo usuário</dd>
 
                 <dt>Categorias</dt>
                 <dd class="body-project--gc"><a class="link-selected" href="category-user-management.php">Gerenciamento de categorias</a></dd>
-                <dd class="body-project--ac">Adiconar nova categoria</dd>
 
                 <dt>Produtos</dt>
                 <dd class="body-project--gp"><a href="product-management.php">Gerenciamento de produtos</a></dd>
-                <dd class="body-project--ap">Adiconar novo produto</dd>
             </dl>
         </div>
 

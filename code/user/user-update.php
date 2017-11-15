@@ -2,40 +2,39 @@
 
 include('../../db/bancodedados.php');
 
-$email = isset($_POST['email']) ? $_POST['email'] : null;
-$login = isset($_POST['login']) ? $_POST['login'] : null;
-$senha = isset($_POST['senha']) ? $_POST['senha'] : null;
+$id = $_POST['id'];
+$login = $_POST['login'];
+$nome = $_POST['nome'];
+$senha = $_POST['senha'];
+$perfil = $_POST['tipo'];
+$ativo = $_POST['ativo'];
 
-session_start();
-$id = $_SESSION['idUser'];
-
-if ($conn) {
-
-    $instrucaoSQL = "UPDATE Usuario SET loginUsuario = ?, senhaUsuario = ? , nomeUsuario = ? WHERE idUsuario = ?";
-    $params = array($email, $senha, $login, $id);
-    $options = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
-    $consulta = sqlsrv_query($conn, $instrucaoSQL, $params, $options);
-    $numRegistros = sqlsrv_num_rows($consulta);
-
-    if ($numRegistros != 0) {
-
-        $instrucaoSQL = "SELECT loginUsuario,nomeUsuario,tipoPerfil,idUsuario FROM Usuario WHERE usuarioAtivo = 1 AND loginUsuario = ? AND senhaUsuario = ?";
-        $params = array($email, $senha);
-        $options = array("Scrollable" => SQLSRV_CURSOR_KEYSET);
-        $consulta = sqlsrv_query($conn, $instrucaoSQL, $params, $options);
-        if ($numRegistros != 0) {
-            $dadosUsuario = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_ASSOC);
-            $_SESSION['login'] = $dadosUsuario["loginUsuario"];
-            $_SESSION['nomeUsuario'] = $dadosUsuario["nomeUsuario"];
-            $_SESSION['tipoUsuario'] = $dadosUsuario["tipoPerfil"];
-            $_SESSION['idUser'] = $dadosUsuario["idUsuario"];
-            $_SESSION['senhaUser'] = $dadosUsuario["senhaUsuario"];
-            header('Location: /management-page-structure/user-management.php');
-        }
+echo "<script>
+    if(confirm('Deseja alterar a categoria  $nome ?')){
+		var alterar = true;
     }
-} else {
-    $msg = "Erro inesperado";
-    header('Location: /management-page-structure/user-management.php');
-}
+</script>";
 
+$alterar = "<script>document.write(alterar);</script>";
+
+try {
+	if ($alterar == true) {
+        $instrucaoSQL = "UPDATE Usuario SET loginUsuario = ?, nomeUsuario = ?, senhaUsuario = ?, tipoPerfil = ?, usuarioAtivo = ? WHERE idUsuario = ?";
+        $params = array($login, $nome, $senha, $perfil, $ativo, $id);
+        $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
+        $rows_affected = sqlsrv_rows_affected($consulta);
+		if($rows_affected > 0){
+				$msg = 'Usuário alterado com sucesso';
+				echo "<script> window.location.href = '/management-page-structure/user-management.php' </script>";	
+			}else{
+				echo "<script> console.log('NAO EXECUTOU ');</script>";
+				$erro = 'Erro ao alterar o usuário';
+                die( print_r( sqlsrv_errors(), true));
+			}
+	}
+
+} catch (Exception $e) {
+    echo "<script> console.log('ERRO'); </script>";
+    die($e);
+}
 ?>

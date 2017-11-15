@@ -50,23 +50,23 @@
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Login</span>
-                    <input type='text' value='<?=$categorias[1];?>' name='nome'/>
+                    <input type='text' value='<?=$categorias[1];?>' name='login'/>
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Senha</span>
-                    <input type='text' value='<?=$categorias[2];?>' name='desc'/>
+                    <input type='text' value='<?=$categorias[2];?>' name='senha'/>
                 </div>
                 <div class='propreties-itens '>
                     <span class="lead body-project--title">Nome</span>
-                    <input type='text' value='<?=$categorias[3];?>' name='id'/>
+                    <input type='text' value='<?=$categorias[3];?>' name='nome'/>
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Tipo</span>
-                    <input type='text' value='<?=$categorias[4];?>' name='nome'/>
+                    <input type='text' value='<?=$categorias[4];?>' name='tipo'/>
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Ativo/Desativo</span>
-                    <input type='text' value='<?=$categorias[5];?>' name='desc'/>
+                    <input type='text' value='<?=$categorias[5];?>' name='ativo'/>
                 </div>
                 <div class="body-project--formbuttons">
                     <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/user/user-update.php' />

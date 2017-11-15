@@ -26,7 +26,7 @@ try {
 				echo "<script> window.location.href = '/management-page-structure/category-user-management.php' </script>";	
 			}else{
 				echo "<script> console.log('NAO EXECUTOU ');</script>";
-				$erro = 'Erro ao alterar o usuário';
+				$erro = 'Erro ao alterar a categoria';
                 die( print_r( sqlsrv_errors(), true));
 			}
 	}

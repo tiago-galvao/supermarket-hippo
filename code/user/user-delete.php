@@ -2,11 +2,12 @@
 
 include('../../db/bancodedados.php');
 
-$login = $_POST['loginUsuario'];
-$nome = $_POST['nomeUsuario'];
-$senha = $_POST['senhaUsuario'];
-$ativo = $_POST['usuarioAtivo'];
-$perfil = $_POST['perfilUsuario'];
+$id = $_POST['id'];
+$login = $_POST['login'];
+$nome = $_POST['nome'];
+$senha = $_POST['senha'];
+$perfil = $_POST['tipo'];
+$ativo = $_POST['ativo'];
 
 echo "<script>
     if(confirm('Deseja deletar o usuário  $nome ?')){
@@ -25,7 +26,7 @@ try {
 
         if($rows_affected > 0){
             $msg = 'Usuário deletado com sucesso';
-            header('Location: /management-page-structure/category-user-management.php');
+            echo "<script> window.location.href = '/management-page-structure/user-management.php' </script>";	
         }else{
             $erro = 'Erro ao deletar o usuário';
             die( print_r( sqlsrv_errors(), true));

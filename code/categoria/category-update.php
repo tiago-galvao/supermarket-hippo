@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include('../../db/bancodedados.php');
 
 $id = $_POST['id'];
@@ -22,11 +22,11 @@ try {
         $rows_affected = sqlsrv_rows_affected($consulta);
 
 		if($rows_affected > 0){
-				$msg = 'Categoria alterado com sucesso';
+				$_SESSION['msg'] = 'Categoria alterada com sucesso';
 				echo "<script> window.location.href = '/management-page-structure/category-user-management.php' </script>";	
 			}else{
 				echo "<script> console.log('NAO EXECUTOU ');</script>";
-				$erro = 'Erro ao alterar a categoria';
+				$_SESSION['erro'] = 'Erro ao alterar a categoria';
                 die( print_r( sqlsrv_errors(), true));
 			}
 	}

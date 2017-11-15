@@ -26,7 +26,21 @@
         </div>
 
         <?php
+        session_start();
         include('../db/bancodedados.php');
+        $msg = $_SESSION['msg'];
+        $erro = $_SESSION['erro'];
+        
+        if(isset($msg)){
+            echo "	<br><center><b><font color='green'>
+				    $msg</font></b></center><br>";
+            session_destroy();
+        }
+        if(isset($erro)) {
+            echo "	<br><center><b><font color='red'>
+				    $erro</font></b></center><br>";
+            session_destroy();
+        }
 
         try {
             $instrucaoSQL = "SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria";

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,21 @@
         </div>
 
         <?php
+        session_start();
         include('../db/bancodedados.php');
+        $msg = $_SESSION['msg'];
+        $erro = $_SESSION['erro'];
+        
+        if(isset($msg)){
+            echo "	<br><center><b><font color='green'>
+				    $msg</font></b></center><br>";
+            session_destroy();
+        }
+        if(isset($erro)) {
+            echo "	<br><center><b><font color='red'>
+				    $erro</font></b></center><br>";
+            session_destroy();
+        }     
 
         try {
             $instrucaoSQL = "SELECT idUsuario,loginUsuario,senhaUsuario,nomeUsuario,tipoPerfil, usuarioAtivo FROM Usuario";
@@ -54,7 +68,7 @@
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Senha</span>
-                    <input type='text' value='<?=$categorias[2];?>' name='senha'/>
+                    <input type='password' value='<?=$categorias[2];?>' name='senha'/>
                 </div>
                 <div class='propreties-itens '>
                     <span class="lead body-project--title">Nome</span>
@@ -62,11 +76,16 @@
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Tipo</span>
-                    <input type='text' value='<?=$categorias[4];?>' name='tipo'/>
+                    <select name="tipo">
+						<option value="A" 
+						<?php if($categorias[4] == 'A') echo "selected"; ?>>Administrador</option>
+						<option value="C"
+						<?php if($categorias[4] == 'C') echo "selected"; ?>>Colaborador</option>
+					</select>
                 </div>
                 <div class='propreties-itens'>
                     <span class="lead body-project--title">Ativo/Desativo</span>
-                    <input type='text' value='<?=$categorias[5];?>' name='ativo'/>
+                    <input type='checkbox' value='<?=$categorias[5];?>' name='ativo' <?php if($categorias[5] == 1) echo "checked";?>/>
                 </div>
                 <div class="body-project--formbuttons">
                     <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/user/user-update.php' />

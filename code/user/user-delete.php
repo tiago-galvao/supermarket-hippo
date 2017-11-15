@@ -1,5 +1,5 @@
-﻿<?php
-
+<?php
+session_start();
 include('../../db/bancodedados.php');
 
 $id = $_POST['id'];
@@ -25,10 +25,10 @@ try {
         $rows_affected = sqlsrv_rows_affected($consulta);
 
         if($rows_affected > 0){
-            $msg = 'Usuário deletado com sucesso';
+            $_SESSION['msg'] = 'Usuário deletado com sucesso';
             echo "<script> window.location.href = '/management-page-structure/user-management.php' </script>";	
         }else{
-            $erro = 'Erro ao deletar o usuário';
+            $_SESSION['erro'] = 'Erro ao deletar o usuário';
             die( print_r( sqlsrv_errors(), true));
         }
     }

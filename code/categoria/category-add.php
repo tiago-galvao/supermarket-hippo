@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../../db/bancodedados.php');
 
 $nome = $_POST['nomeCategoria'];
@@ -17,10 +18,10 @@ try {
        	    $rows_affected = sqlsrv_rows_affected($consulta);
 
             if($rows_affected > 0){
-                $msg = 'Categoria deletada com sucesso';
+                $_SESSION['msg'] = 'Categoria adicionada com sucesso';
                 header('Location: /management-page-structure/category-user-management.php');
             }else{
-                $erro = 'Erro ao deletar o usuário';
+                $_SESSION['erro'] = 'Erro ao adicionar a categoria';
                 die( print_r( sqlsrv_errors(), true));
             }
     							

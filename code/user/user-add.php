@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../../db/bancodedados.php');
 
 $login = $_POST['loginUsuario'];
@@ -23,10 +24,10 @@ try {
 			$nome = utf8_decode($nome);
         
             if($rows_affected > 0){
-                $msg = 'Usuário adicionado com sucesso';
+                $_SESSION['msg'] = 'Usuário adicionado com sucesso';
                 header('Location: /management-page-structure/user-management.php');
             }else{
-                $erro = 'Erro ao deletar o usuário';
+                $_SESSION['erro'] = 'Erro ao deletar o usuário';
                 die( print_r( sqlsrv_errors(), true));
             }	
 								

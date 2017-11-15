@@ -163,30 +163,6 @@ form .button{
 	font-size: 1.4em;
 }
 		
-form input.text, form select, form textarea {
-	position: relative;
-	-webkit-appearance: none;
-	display: block;
-	border: 0;
-	background-color: #5a1e23;
-	width: 100%;
-	margin: 0.5em 0em;
-	padding: 1.50em 1em;
-	box-shadow: inset 0 0.1em 0.1em 0 rgba(0,0,0,0.05);
-	border: solid 1px rgba(0,0,0,0.10);
-	-moz-transition: all 0.35s ease-in-out;
-	-webkit-transition: all 0.35s ease-in-out;
-	-o-transition: all 0.35s ease-in-out;
-	-ms-transition: all 0.35s ease-in-out;
-	transition: all 0.35s ease-in-out;
-	font-family: 'Pontano Sans', sans-serif;
-	font-size: 1.2em;
-	outline: none;
-	width: 35rem;
-	color: #fff;
-    text-align: center;
-}
-
 ::-webkit-input-placeholder  { color:#FFF; }
 input:-moz-placeholder { color:#FFF; }
 textarea:-moz-placeholder { color:#FFF; }

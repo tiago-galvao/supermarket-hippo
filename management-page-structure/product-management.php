@@ -14,17 +14,14 @@
     <div class="body-project--product">
         <div class="body-project--sidebar">
             <dl>
-                <dt>UsuÃ¡rios</dt>
-                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuÃ¡rios</a></dd>
-                <dd class="body-project--au">Adiconar novo usuÃ¡rio</dd>
+                <dt>Usuário</dt>
+                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuário</a></dd>
 
                 <dt>Categorias</dt>
                 <dd class="body-project--gc"><a href="category-user-management.php">Gerenciamento de categorias</a></dd>
-                <dd class="body-project--ac">Adiconar nova categoria</dd>
 
                 <dt>Produtos</dt>
                 <dd class="body-project--gp"><a class="link-selected" href="product-management.php">Gerenciamento de produtos</a></dd>
-                <dd class="body-project--ap">Adiconar novo produto</dd>
             </dl>
         </div>
 
@@ -77,7 +74,6 @@
         <?php
             }
         ?>
-
     </div>
     <?php include('../main-page-structure/import-javascript.php') ?>
 </body>

@@ -12,48 +12,19 @@ jQuery("document").ready(function ($) {
 
 });
 
+$('#categoriaModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget);
+    var recipient = button.data('whatever');
+    var modal = $(this);
+    modal.find('.modal-title').text('Nova Categoria');
+    modal.find('.modal-body input').val(recipient);
+})
 
-$(function () {
-    $('.nav-tog').click(function (e) {
-        e.stopPropagation();
-        toggleNav();
-    });
-
-    $('#main').click(function (e) {
-        var target = $(e.target);
-        if(!target.closest('#nav').length && $('.menu').hasClass('show-nav')){
-            toggleNav();
-        }
-    });
-
-    function toggleNav() {
-        if($('.menu').hasClass('show-nav')){
-            $('.menu').removeClass('show-nav');
-            $('#closeIcon').addClass('invisivel');
-            $('#openText').removeClass('invisivel');
-        }else{
-            $('.menu').addClass('show-nav');
-            $('#closeIcon').removeClass('invisivel');
-            $('#openText').addClass('invisivel');
-        }
-    }
-});
-
-
-$(function () {
-    $('#entrar').click(function (e) {
-        $('#entrarForm').removeClass('invisivel');
-        $('#cadastrarForm').addClass('invisivel');
-        $('#entrar').addClass('form-selected');
-        $('#cadastrar').removeClass('form-selected');
-    });
-
-    $('#cadastrar').click(function (e) {
-        $('#entrarForm').addClass('invisivel');
-        $('#cadastrarForm').removeClass('invisivel');
-        $('#entrar').removeClass('form-selected');
-        $('#cadastrar').addClass('form-selected');
-    });
-});
-
+$('#usuarioModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) ;
+    var recipient = button.data('whatever');
+    var modal = $(this);
+    modal.find('.modal-title').text('Novo Usuário ');
+    modal.find('.modal-body input').val(recipient);
+})
 

@@ -134,6 +134,17 @@ body{
     cursor: pointer;
 }
 
+.bnt-button--add{
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    font-size: 29px;
+    position: fixed;
+    bottom: 4%;
+    left: 86%;
+    box-shadow: 7px 7px 5px #CCCCCC;
+}
+
 .body-project--title{
     font-size: 12px;
 }

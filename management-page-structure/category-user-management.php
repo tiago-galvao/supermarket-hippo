@@ -10,7 +10,7 @@
 
 <?php include ('../management-page-structure/top-bar.php'); ?>
 
-<div class="container-fluid">
+<div class="container">
     <div class="body-project">
         <div class="body-project--sidebar">
             <dl>
@@ -80,55 +80,39 @@
         }
         ?>
     </div>
-
         <div class="row">
             <div class='box-container-add'>
-                <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#exampleModal">Adicionar Nova Categoria</button>
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form method="POST">
-                          <div class="form-group">
-                            <label for="recipient-name" class="form-control-label">Nome:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="nomeCategoria">
-                          </div>
-                          <div class="form-group">
-                            <label for="message-text" class="form-control-label" >Descrição:</label>
-                            <textarea class="form-control" id="message-text" name="descCategoria"></textarea>
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnAdd" formaction='/code/categoria/category-add.php'></input>
-
-                      </div>
-                      </form>
+                <button class='btn btn-danger bnt-button--add' type='submit' data-toggle="modal" data-target="#categoriaModal">+</button>
+                <div class="modal fade" id="categoriaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form method="POST">
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="form-control-label">Nome:</label>
+                                        <input type="text" class="form-control" id="recipient-name" name="nomeCategoria">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="form-control-label" >Descrição:</label>
+                                        <textarea class="form-control" id="message-text" name="descCategoria"></textarea>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnAdd" formaction='/code/categoria/category-add.php'></input>
+                            </div>
+                            </form>
+                        </div>
                     </div>
-                  </div>
                 </div>
             </div>
-        </div>  
-        
-<?php include('../main-page-structure/import-javascript.php') ?>  
-    
-<script>
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('Nova Categoria')
-  modal.find('.modal-body input').val(recipient)
-})
-</script>
-
+        </div>
+<?php include('../main-page-structure/import-javascript.php') ?>
 </body>
 </html>

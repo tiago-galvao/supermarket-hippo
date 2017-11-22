@@ -10,65 +10,37 @@
 
 <?php include('../management-page-structure/top-bar.php'); ?>
 
-<div class="container">
-    <div class="body-project">
-        <div class="body-project--sidebar">
-            <dl>
-                <dt>Usuários</dt>
-                <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuários</a></dd>
+<div class="container" style="display: flex">
+    <div class="row body-project--navbar">
+        <div class="body-project--options">
+            <span class="body-project--title">Gerenciamento</span>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Categorias
+                </a>
 
-                <dt>Categorias</dt>
-                <dd class="body-project--gc"><a class="link-selected" href="category-user-management.php">Gerenciamento
-                        de categorias</a></dd>
-
-                <dt>Produtos</dt>
-                <dd class="body-project--gp"><a href="product-management.php">Gerenciamento de produtos</a></dd>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#categoriaModal">Adicionar
-                    Nova Categoria
-                </button>
-            </dl>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="product-management.php">Produtos</a>
+                    <a class="dropdown-item" href="user-management.php">Usuários</a>
+                </div>
+            </div>
         </div>
+        <div class="body-project--addbutton">
+            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#categoriaModal">Adicionar Nova
+                Categoria
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
 
-        <?php
-        session_start();
-        include('../db/bancodedados.php');
-        $msg = $_SESSION['msg'];
-        $erro = $_SESSION['erro'];
-
-        if (isset($msg)) {
-            echo "
-                <div class='container' style='left:23%'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $msg
-                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            ";
-            session_destroy();
-        }
-        if (isset($erro)) {
-            echo "
-                <div class='container' style='left:23%'>
-                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $erro
-                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                        </button>
-                    </div>
-                </div>
-            ";
-            session_destroy();
-        }
-
+        <?php include('../db/bancodedados.php');
         try {
             $instrucaoSQL = "SELECT idCategoria, nomeCategoria, descCategoria FROM Categoria";
             $consulta = sqlsrv_query($conn, $instrucaoSQL);
             $numRegistros = sqlsrv_num_rows($consulta);
-
         } catch (Exception $e) {
             die($e);
         }
@@ -77,31 +49,27 @@
 
             $categorias[1] = utf8_encode((empty($categorias[1])) ? "Sem dados" : $categorias[1]);
             $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
-            ?>
-            <div class="row body-project--boxinfo">
-                <form class="body-project--form" method='post'>
-                    <div class='propreties-itens '>
-                        <span class="lead body-project--title">Id</span>
-                        <input type='text' value='<?= $categorias[0]; ?>' name='id'/>
+            ?>			
+			 <div class="col-sm-6 col-md-3">
+                <div class="card  mb-3">
+                    <div class="card-block">
+                        <h5 class="card-title"><?= $categorias[1] ?></h5>
+                        <p class="card-text"><strong>Id da Categoria : </strong><?=  $categorias[0]; ?></p>
                     </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Nome</span>
-                        <input type='text' value='<?= $categorias[1]; ?>' name='nome'/>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Descrição</span>
-                        <input type='text' value='<?= $categorias[2]; ?>' name='desc'/>
-                    </div>
-                    <div class="body-project--formbuttons">
-                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $categorias[2]; ?></li>
+                    </ul>
+                    <div class="card-footer" style="display: flex; justify-content: space-between;">
+						<input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
                         <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'formaction='/code/categoria/category-delete.php'>
                     </div>
-                </form>
-            </div>
-            <?php
+                </div>
+            </div>		
+        <?php
         }
         ?>
-    </div>
+		</div>
+	</div>
     <div class="row">
         <div class='box-container-add'>
 

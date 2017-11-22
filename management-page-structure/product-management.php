@@ -81,52 +81,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--    <div class="row body-project--boxproduct">-->
-            <!--        <div class="body-project--form">-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Id</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[0] . "</span>"; ?>
-            <!--            </div>-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Nome</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[1] . "</span>"; ?>
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        --><?php ////echo "<div class='img-responsive body-project--formimage'>".$img_imagem_base64."</div>"; ?>
-            <!--        <div class="body-project--form">-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Desconto Promoção</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[2] . "</span>"; ?>
-            <!--            </div>-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Preço</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[3] . "</span>"; ?>
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        <div class="body-project--form">-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Quantidade No Estoque</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[8] . "</span>"; ?>
-            <!--            </div>-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Ativo/Desativo</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[7] . "</span>"; ?>
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        <div class="body-project--form">-->
-            <!--            <div class='propreties-itens'>-->
-            <!--                <span class="lead body-project--title">Descrição</span>-->
-            <!--                --><?php //echo "<span>" . $produtos[4] . "</span>"; ?>
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--        <div class="body-project--form">-->
-            <!--            <div class="body-project--formbuttons">-->
-            <!--                <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='teste.php'/>-->
-            <!--                <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='teste.php'>-->
-            <!--            </div>-->
-            <!--        </div>-->
-            <!--    </div>-->
             <?php
         }
         ?>

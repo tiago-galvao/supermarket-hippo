@@ -37,6 +37,34 @@
 <div class="container">
     <div class="row">
         <?php include('../db/bancodedados.php');
+		
+		session_start();
+        include('../db/bancodedados.php');
+        $msg = $_SESSION['msg'];
+        $erro = $_SESSION['erro'];
+
+        if(isset($msg)){
+            echo "
+                <div class='container' style='left:23%'>
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $msg
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            ";
+        }
+        if(isset($erro)) {
+            echo "
+                <div class='container' style='left:23%'>
+                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $erro
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            ";
+        }
 
         try {
             $instrucaoSQL = "SELECT idProduto, nomeProduto, descontoPromocao, precProduto, descProduto, idCategoria, idUsuario, ativoProduto, qtdMinEstoque, imagem FROM  Produto";

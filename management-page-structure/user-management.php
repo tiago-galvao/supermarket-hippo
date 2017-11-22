@@ -28,7 +28,7 @@
         </div>
         <div class="body-project--addbutton">
             <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#produtoModal">Adicionar Novo
-                Produto
+                Usuario
             </button>
         </div>
     </div>
@@ -86,8 +86,7 @@
                         <strong>Login  </strong><input class="list-group-item" name="login" value="<?= $usuario[1]; ?>" />
                         <strong>Senha  </strong><input class="list-group-item" name="senha" value="<?= $usuario[2]; ?>" />
                         <strong>Tipo  </strong><input class="list-group-item" name="perfil" value="<?= $usuario[2]; ?>" />
-                        <strong>Ativo/Desativo  </strong><input class="list-group-item" name="ativo" value="<?= $usuario[5]; ?>" />
-                        
+                        <strong>Ativo/Desativo  </strong><input class="list-group-item" name="ativo" value="<?= $usuario[5]; ?>" /> 
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
                         <input class='body-project--formbutton' type='image' src='/svg/pencil.svg'   formaction='/code/user/user-update.php'/>

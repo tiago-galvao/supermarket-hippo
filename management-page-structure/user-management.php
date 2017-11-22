@@ -23,6 +23,13 @@
 
                 <dt>Produtos</dt>
                 <dd class="body-project--gp"><a href="product-management.php">Gerenciamento de produtos</a></dd>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#usuarioModal">Adicionar Novo
+                    Usuario
+                </button>
             </dl>
         </div>
 
@@ -32,14 +39,28 @@
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];
 
-        if (isset($msg)) {
-            echo "	<br><center><b><font color='green'>
-				    $msg</font></b></center><br>";
+        if(isset($msg)){
+            echo "
+                <div class='container' style='left:23%'>
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $msg
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            ";
             session_destroy();
         }
-        if (isset($erro)) {
-            echo "	<br><center><b><font color='red'>
-				    $erro</font></b></center><br>";
+        if(isset($erro)) {
+            echo "
+                <div class='container' style='left:23%'>
+                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $erro
+                        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            ";
             session_destroy();
         }
 
@@ -106,10 +127,7 @@
     </div>
     <div class="row">
         <div class='box-container-add'>
-            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#usuarioModal">Adicionar Novo
-                Usuario
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">

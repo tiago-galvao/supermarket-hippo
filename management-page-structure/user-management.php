@@ -10,28 +10,32 @@
 
 <?php include('../management-page-structure/top-bar.php'); ?>
 
-<div class="container">
-    <div class="body-project">
-        <div class="body-project--sidebar">
-            <dl>
-                <dt>Usuários</dt>
-                <dd class="body-project--gu"><a class="link-selected" href="user-management.php">Gerenciamento de
-                        usuários</a></dd>
+<div class="container" style="display: flex">
+    <div class="row body-project--navbar">
+        <div class="body-project--options">
+            <span class="body-project--title">Gerenciamento</span>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Produtos
+                </a>
 
-                <dt>Categorias</dt>
-                <dd class="body-project--gc"><a href="category-user-management.php">Gerenciamento de categorias</a></dd>
-
-                <dt>Produtos</dt>
-                <dd class="body-project--gp"><a href="product-management.php">Gerenciamento de produtos</a></dd>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#usuarioModal">Adicionar Novo
-                    Usuario
-                </button>
-            </dl>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="category-user-management.php">Categorias</a>
+                    <a class="dropdown-item" href="user-management.php">Usuários</a>
+                </div>
+            </div>
         </div>
+        <div class="body-project--addbutton">
+            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#produtoModal">Adicionar Novo
+                Produto
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
 
         <?php
         session_start();
@@ -49,7 +53,6 @@
                     </div>
                 </div>
             ";
-            session_destroy();
         }
         if(isset($erro)) {
             echo "
@@ -61,7 +64,6 @@
                     </div>
                 </div>
             ";
-            session_destroy();
         }
 
         try {
@@ -73,52 +75,31 @@
             die($e);
         }
 
-        while ($categorias = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
+        while ($usuario = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
 
-            $categorias[1] = utf8_encode((empty($categorias[1])) ? "Sem dados" : $categorias[1]);
-            $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
+            $usuario[1] = utf8_encode((empty($usuario[1])) ? "Sem dados" : $usuario[1]);
+            $usuario[2] = utf8_encode((empty($usuario[2])) ? "Sem dados" : $usuario[2]);
+			$usuario[5] =($usuario[5] == 1) ? "Sim" : "Não";
             ?>
-            <div class="row body-project--boxinfo">
-                <form class="body-project--form" method='post'>
-                    <div class='propreties-itens '>
-                        <span class="lead body-project--title">Id</span>
-                        <input type='text' value='<?= $categorias[0]; ?>' name='id'/>
+			<div class="col-sm-6 col-md-4">
+                <div class="card  mb-3">
+                    <?php echo $image64; ?>
+                    <div class="card-block">
+                        <h5 class="card-title"><?= $usuario[3] ?></h5>
+                        <p class="card-text"><strong>Id do Usuário : </strong><?=  $usuario[0]; ?></p>
                     </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Login</span>
-                        <input type='text' value='<?= $categorias[1]; ?>' name='login'/>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Login  </strong><?= $usuario[1]; ?></li>
+                        <li class="list-group-item"><strong>Senha  </strong><?= $usuario[2]; ?></li>
+						<li class="list-group-item"><strong>Tipo  </strong><?= $usuario[2]; ?></li>
+						<li class="list-group-item"><strong>Ativo/Desativo  </strong><?= $usuario[5]; ?></li>
+						
+                    </ul>
+                    <div class="card-footer" style="display: flex; justify-content: space-between;">
+                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg'   formaction='/code/user/user-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'  formaction='/code/user/user-delete.php'>
                     </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Senha</span>
-                        <input type='password' value='<?= $categorias[2]; ?>' name='senha'/>
-                    </div>
-                    <div class='propreties-itens '>
-                        <span class="lead body-project--title">Nome</span>
-                        <input type='text' value='<?= $categorias[3]; ?>' name='nome'/>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Tipo</span>
-                        <select name="tipo">
-                            <option value="A"
-                                <?php if ($categorias[4] == 'A') echo "selected"; ?>>Administrador
-                            </option>
-                            <option value="C"
-                                <?php if ($categorias[4] == 'C') echo "selected"; ?>>Colaborador
-                            </option>
-                        </select>
-                    </div>
-                    <div class='propreties-itens'>
-                        <span class="lead body-project--title">Ativo/Desativo</span>
-                        <input type='checkbox' value='<?= $categorias[5]; ?>'
-                               name='ativo' <?php if ($categorias[5] == 1) echo "checked"; ?>/>
-                    </div>
-                    <div class="body-project--formbuttons">
-                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg'
-                               formaction='/code/user/user-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'
-                               formaction='/code/user/user-delete.php'>
-                    </div>
-                </form>
+                </div>
             </div>
             <?php
         }

@@ -65,15 +65,15 @@
                 <div class="card  mb-3">
                     <?php echo $image64; ?>
                     <div class="card-block">
-                        <h5 class="card-title"><?= $produtos[1] ?></h5>
-                        <p class="card-text"><strong>Id do Produto : </strong><?=  $produtos[0]; ?></p>
+                        <input class="card-title" name="nome" value="<?= $produtos[1] ?>" />
+                        <strong>Id do Produto : </strong><input class="card-text" name="id" value="<?=  $produtos[0]; ?>"/>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Preço  </strong>$<?= round($produtos[3],2); ?></li>
-                        <li class="list-group-item"><strong>Desconto  </strong>$<?= round($produtos[2],2); ?></li>
-                        <li class="list-group-item"><strong>Quantidade no Estoque  </strong><?= $produtos[8]; ?></li>
-                        <li class="list-group-item"><strong>Produto Ativo  </strong><?= $produtos[7]; ?></li>
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $produtos[4]; ?></li>
+                        <strong>Preço  </strong><input class="list-group-item" name="preco" value="$<?= round($produtos[3],2); ?>"/>
+                        <strong>Desconto  </strong><input class="list-group-item" name="desconto" value="$<?= round($produtos[2],2); ?>"/>
+                        <strong>Quantidade no Estoque  </strong><input class="list-group-item" name="quantEstoque" value="<?= $produtos[8]; ?>"/>
+                        <strong>Produto Ativo  </strong><input class="list-group-item" name="ativo" value="<?= $produtos[7]; ?>" />
+                        <input class="list-group-item" name="desc" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $produtos[4]; ?>/>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
                         <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>

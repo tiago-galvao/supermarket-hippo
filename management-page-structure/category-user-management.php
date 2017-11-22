@@ -53,15 +53,15 @@
 			 <div class="col-sm-6 col-md-3">
                 <div class="card  mb-3">
                     <div class="card-block">
-                        <h5 class="card-title"><?= $categorias[1] ?></h5>
-                        <p class="card-text"><strong>Id da Categoria : </strong><?=  $categorias[0]; ?></p>
+                        <input class="card-title" name="nome" value="<?= $categorias[1] ?>"/>
+                        <strong>Id da Categoria : </strong><input class="card-text" name="id" value="<?=  $categorias[0]; ?>"/>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $categorias[2]; ?></li>
+                        <strong>Descrição  </strong><input class="list-group-item" style="overflow: auto; height: 230px" name="desc" value="<?= $categorias[2]; ?>" />
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
 						<input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'formaction='/code/categoria/category-delete.php'>
+                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='/code/categoria/category-delete.php'>
                     </div>
                 </div>
             </div>		

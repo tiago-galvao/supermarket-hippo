@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<?php include ('../management-page-structure/top-bar.php'); ?>
+<?php include('../management-page-structure/top-bar.php'); ?>
 
 <div class="container">
     <div class="body-project">
@@ -18,7 +18,8 @@
                 <dd class="body-project--gu"><a href="user-management.php">Gerenciamento de usuários</a></dd>
 
                 <dt>Categorias</dt>
-                <dd class="body-project--gc"><a class="link-selected" href="category-user-management.php">Gerenciamento de categorias</a></dd>
+                <dd class="body-project--gc"><a class="link-selected" href="category-user-management.php">Gerenciamento
+                        de categorias</a></dd>
 
                 <dt>Produtos</dt>
                 <dd class="body-project--gp"><a href="product-management.php">Gerenciamento de produtos</a></dd>
@@ -26,7 +27,9 @@
                 <br/>
                 <br/>
                 <br/>
-                <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#categoriaModal">Adicionar Nova Categoria</button>
+                <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#categoriaModal">Adicionar
+                    Nova Categoria
+                </button>
             </dl>
         </div>
 
@@ -35,8 +38,8 @@
         include('../db/bancodedados.php');
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];
-        
-        if(isset($msg)){
+
+        if (isset($msg)) {
             echo "
                 <div class='container' style='left:23%'>
                     <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $msg
@@ -48,7 +51,7 @@
             ";
             session_destroy();
         }
-        if(isset($erro)) {
+        if (isset($erro)) {
             echo "
                 <div class='container' style='left:23%'>
                     <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $erro
@@ -79,19 +82,19 @@
                 <form class="body-project--form" method='post'>
                     <div class='propreties-itens '>
                         <span class="lead body-project--title">Id</span>
-                        <input type='text' value='<?=$categorias[0];?>' name='id'/>
+                        <input type='text' value='<?= $categorias[0]; ?>' name='id'/>
                     </div>
                     <div class='propreties-itens'>
                         <span class="lead body-project--title">Nome</span>
-                        <input type='text' value='<?=$categorias[1];?>' name='nome'/>
+                        <input type='text' value='<?= $categorias[1]; ?>' name='nome'/>
                     </div>
                     <div class='propreties-itens'>
                         <span class="lead body-project--title">Descrição</span>
-                        <input type='text' value='<?=$categorias[2];?>' name='desc'/>
+                        <input type='text' value='<?= $categorias[2]; ?>' name='desc'/>
                     </div>
                     <div class="body-project--formbuttons">
-                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php' />
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='/code/categoria/category-delete.php' >
+                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'formaction='/code/categoria/category-delete.php'>
                     </div>
                 </form>
             </div>
@@ -99,40 +102,42 @@
         }
         ?>
     </div>
-        <div class="row">
-            <div class='box-container-add'>
+    <div class="row">
+        <div class='box-container-add'>
 
-                <div class="modal fade" id="categoriaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="POST">
-                                    <div class="form-group">
-                                        <label for="recipient-name" class="form-control-label">Nome:</label>
-                                        <input type="text" class="form-control" id="recipient-name" name="nomeCategoria">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="message-text" class="form-control-label" >Descrição:</label>
-                                        <textarea class="form-control" id="message-text" name="descCategoria"></textarea>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnAdd" formaction='/code/categoria/category-add.php'></input>
-                            </div>
-                            </form>
+            <div class="modal fade" id="categoriaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Nova Categoria</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
+                        <div class="modal-body">
+                            <form method="POST">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="form-control-label">Nome:</label>
+                                    <input type="text" class="form-control" id="recipient-name" name="nomeCategoria">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="form-control-label">Descrição:</label>
+                                    <textarea class="form-control" id="message-text" name="descCategoria"></textarea>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnAdd"
+                                   formaction='/code/categoria/category-add.php'></input>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-<?php include('../main-page-structure/import-javascript.php') ?>
+    <?php include('../main-page-structure/import-javascript.php') ?>
 </body>
 </html>

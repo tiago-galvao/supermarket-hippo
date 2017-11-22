@@ -48,10 +48,21 @@ body{
     border: 1px solid transparent;
 }
 
-.body-project--sidebar{
-    flex-shrink: 0;
-    position: fixed;
-    left: 35px;
+.body-project--navbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.body-project--options{
+    display: flex;
+    align-items: center;
+    margin: 31px;
+}
+
+.body-project--addbutton{
+    display: flex;
+    align-items: center;
 }
 
 .body-project--boxinfo{
@@ -136,7 +147,8 @@ body{
 }
 
 .body-project--title{
-    font-size: 12px;
+    font-size: 24px;
+    margin: 0px 25px;
 }
 
 .link-selected{

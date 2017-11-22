@@ -48,21 +48,24 @@
         }
 
         while ($produtos = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
-
+            
+            if (strlen($produtos[1]) >= 25) {
+                $produtos[1] = substr($produtos[1], 0, 25). '...';
+            }          
             $produtos[1] = utf8_encode((empty($produtos[1])) ? "Sem dados" : $produtos[1]);
             $produtos[2] = utf8_encode((empty($produtos[2])) ? "Sem dados" : $produtos[2]);
             $produtos[4] = utf8_encode((empty($produtos[4])) ? "Sem dados" : $produtos[4]);
             $produtos[7] =($produtos[7] == 1) ? "Sim" : "Não";
-            $img_imagem_base64 = $produtos[9];
-            $img_imagem_base64 = base64_encode($img_imagem_base64);
-            $img_imagem_base64 = "<img class=\"card-img-top img-fluid\" alt=\"Card image cap\" width=\"400\" 'src=\"data:image/jpeg;base64," . $img_imagem_base64 . "\">";
+            $image64 = $produtos[9];
+            $image64 = base64_encode($image64);
+            $image64 = "<img height='200px' weight='200px 'src=\"data:image/jpeg;base64,".$image64."\">";
             ?>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-4">
                 <div class="card  mb-3">
-                    <?php echo $img_imagem_base64; ?>
+                    <?php echo $image64; ?>
                     <div class="card-block">
-                        <h5 class="card-title"><?= $produtos[1]; ?></h5>
+                        <h5 class="card-title"><?= $produtos[1] ?></h5>
                         <p class="card-text"><strong>Id do Produto : </strong><?=  $produtos[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
@@ -70,11 +73,11 @@
                         <li class="list-group-item"><strong>Desconto  </strong>$<?= round($produtos[2],2); ?></li>
                         <li class="list-group-item"><strong>Quantidade no Estoque  </strong><?= $produtos[8]; ?></li>
                         <li class="list-group-item"><strong>Produto Ativo  </strong><?= $produtos[7]; ?></li>
-                        <li class="list-group-item" style="overflow: auto; height: 70px"><strong>Descrição  </strong><?= $produtos[4]; ?></li>
+                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
                         <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'formaction='/code/categoria/category-delete.php'>
+                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='/code/categoria/category-delete.php'/>
                     </div>
                 </div>
             </div>

@@ -89,23 +89,23 @@
             $image64 = "<img height='200px' weight='200px 'src=\"data:image/jpeg;base64,".$image64."\">";
             ?>
 
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-3">
                 <div class="card  mb-3">
                     <?php echo $image64; ?>
                     <div class="card-block">
                         <h5 class="card-title"><?= $produtos[1] ?></h5>
-                        <p class="card-text"><strong>Id do Produto : </strong><?=  $produtos[0]; ?></p>
+                        <p class="card-text"><strong>Id do Produto : &nbsp; &nbsp; </strong><?=  $produtos[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Preço  </strong>$<?= round($produtos[3],2); ?></li>
-                        <li class="list-group-item"><strong>Desconto  </strong>$<?= round($produtos[2],2); ?></li>
-                        <li class="list-group-item"><strong>Quantidade no Estoque  </strong><?= $produtos[8]; ?></li>
-                        <li class="list-group-item"><strong>Produto Ativo  </strong><?= $produtos[7]; ?></li>
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $produtos[4]; ?></li>
+                        <li class="list-group-item"><strong>Preço : &nbsp; &nbsp;  </strong>$<?= round($produtos[3],2); ?></li>
+                        <li class="list-group-item"><strong>Desconto : &nbsp; &nbsp;  </strong>$<?= round($produtos[2],2); ?></li>
+                        <li class="list-group-item"><strong>Quantidade no Estoque : &nbsp; &nbsp;  </strong><?= $produtos[8]; ?></li>
+                        <li class="list-group-item"><strong>Produto Ativo : &nbsp; &nbsp;  </strong><?= $produtos[7]; ?></li>
+                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp; &nbsp;  </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg' formaction='/code/categoria/category-delete.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg' formaction='../code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg' formaction='../code/categoria/category-delete.php'/>
                     </div>
                 </div>
             </div>
@@ -156,7 +156,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                         <input type="submit" class="btn btn-danger" value="Adicionar nova categoria"
-                               name="btnGravar" formaction='/code/user/user-add.php'></input>
+                               name="btnGravar" formaction='../code/user/user-add.php'></input>
                     </div>
                     </form>
                 </div>

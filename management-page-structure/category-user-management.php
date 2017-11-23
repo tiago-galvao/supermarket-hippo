@@ -83,14 +83,14 @@
                 <div class="card  mb-3">
                     <div class="card-block">
                         <h5 class="card-title"><?= $categorias[1] ?></h5>
-                        <p class="card-text"><strong>Id da Categoria : </strong><?=  $categorias[0]; ?></p>
+                        <p class="card-text"><strong>Id da Categoria : &nbsp; &nbsp;</strong><?=  $categorias[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição  </strong><?= $categorias[2]; ?></li>
+                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp; &nbsp;  </strong><?= $categorias[2]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-						<input class='body-project--formbutton' type='image' src='/svg/pencil.svg' formaction='/code/categoria/category-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'formaction='/code/categoria/category-delete.php'>
+						<input class='body-project--formbutton' type='image' src='../svg/pencil.svg' formaction='../code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'formaction='../code/categoria/category-delete.php'>
                     </div>
                 </div>
             </div>		
@@ -126,7 +126,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnAdd"
-                                   formaction='/code/categoria/category-add.php'></input>
+                                   formaction='../code/categoria/category-add.php'></input>
                         </div>
                         </form>
                     </div>

@@ -17,18 +17,18 @@
             <div class="dropdown">
                 <a class="btn btn-secondary dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    Produtos
+                    Usuários
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="category-user-management.php">Categorias</a>
-                    <a class="dropdown-item" href="user-management.php">Usuários</a>
+                    <a class="dropdown-item" href="product-management.php">Produtos</a>
                 </div>
             </div>
         </div>
         <div class="body-project--addbutton">
-            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#produtoModal">Adicionar Novo
-                Produto
+            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#usuarioModal">Adicionar Novo
+                Usuário
             </button>
         </div>
     </div>
@@ -89,18 +89,20 @@
                         <p class="card-text"><strong>Id do Usuário : </strong><?=  $usuario[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Login  </strong><?= $usuario[1]; ?></li>
-                        <li class="list-group-item"><strong>Senha  </strong><?= $usuario[2]; ?></li>
-						<li class="list-group-item"><strong>Tipo  </strong><?= $usuario[2]; ?></li>
-						<li class="list-group-item"><strong>Ativo/Desativo  </strong><?= $usuario[5]; ?></li>
+                        <li class="list-group-item"><strong>Login : &nbsp; &nbsp;</strong><?= $usuario[1]; ?></li>
+                        <li class="list-group-item"><strong>Senha : &nbsp; &nbsp;</strong><?= $usuario[2]; ?></li>
+						<li class="list-group-item"><strong>Tipo : &nbsp; &nbsp;</strong><?= $usuario[4]; ?></li>
+						<li class="list-group-item"><strong>Ativo/Desativo :  &nbsp; &nbsp;</strong><?= $usuario[5]; ?></li>
 						
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='/svg/pencil.svg'   formaction='/code/user/user-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='/svg/garbage.svg'  formaction='/code/user/user-delete.php'>
+                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'   formaction='../code/user/user-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'  formaction='../code/user/user-delete.php'>
                     </div>
                 </div>
             </div>
+			
+
             <?php
         }
         ?>
@@ -148,8 +150,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <input type="submit" class="btn btn-danger" value="Adicionar nova categoria"
-                                   name="btnGravar" formaction='/code/user/user-add.php'></input>
+                            <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnGravar" formaction='../code/user/user-add.php'></input>
                         </div>
                         </form>
                     </div>

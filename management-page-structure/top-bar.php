@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="header-navbar--logo">
-            <img src="..." class="img-fluid" alt="Responsive image">
+            <img src="../img/LogoHippo.jpg" class="img-fluid" alt="Responsive image">
         </div>
         <div class="header-navbar--searchfor">
             <div class="input-group">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="header-navbar--itens">
-            <p class="header-navbar--user">Tiago Galvão </p>
+            <p class="header-navbar--user">Tiago Galvão</p>
             <button type="button" class="btn btn-danger">Sair</button>
         </div>
     </div>

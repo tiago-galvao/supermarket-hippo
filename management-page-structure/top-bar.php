@@ -2,7 +2,7 @@
 
     <div class="container-fluid">
         <div class="header-navbar--logo">
-            <img src="../img/LogoHippo.jpg" class="img-fluid" alt="Responsive image">
+            <span style="color: #d9534f; font-size: 18px;">Supermercado Hippo</span>
         </div>
         <div class="header-navbar--searchfor">
             <div class="input-group">
@@ -14,5 +14,4 @@
             <button type="button" class="btn btn-danger">Sair</button>
         </div>
     </div>
-
 </header>

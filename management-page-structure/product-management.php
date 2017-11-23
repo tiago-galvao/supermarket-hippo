@@ -46,7 +46,7 @@
         if (isset($msg)) {
             echo "
                 <div class='container' style='display: flex; justify-content: space-around;'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: 25%;'> $msg
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: auto;'> $msg
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
@@ -59,7 +59,7 @@
         if (isset($erro)) {
             echo "
                 <div class='container' style='display: flex; justify-content: space-around;'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: 25%;'> $erro
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: auto;'> $erro
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
@@ -114,10 +114,10 @@
                                 &nbsp; </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'
-                               formaction='../code/categoria/category-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'
-                               formaction='../code/categoria/category-delete.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg' formaction='../code/categoria/category-update.php'/>
+                        <form method="post">
+                            <input class='body-project--formbutton' type='image' src='../svg/garbage.svg' value="<?= $produtos[0]; ?>" name="id" formaction='../code/categoria/category-delete.php'/>
+                        </form>
                     </div>
                 </div>
             </div>

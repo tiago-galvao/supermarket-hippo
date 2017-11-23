@@ -17,15 +17,14 @@ try {
     $rows_affected = sqlsrv_rows_affected($consulta);
     if ($rows_affected > 0) {
         $_SESSION['msg'] = 'Usuário alterado com sucesso';
-        echo "<script> window.location.href = '/management-page-structure/user-management.php' </script>";
+        header('Location: /management-page-structure/user-management.php');
     } else {
-        echo "<script> console.log('NAO EXECUTOU ');</script>";
         $_SESSION['erro'] = 'Erro ao alterar o usuário';
-        die(print_r(sqlsrv_errors(), true));
+        header('Location: /management-page-structure/user-management.php');
     }
 
 } catch (Exception $e) {
-    echo "<script> console.log('ERRO'); </script>";
     die($e);
+    header('Location: /management-page-structure/user-management.php');
 }
 ?>

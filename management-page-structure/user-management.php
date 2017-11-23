@@ -94,7 +94,7 @@
                         </li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#usuarioUpdateModal" src='../svg/pencil.svg'  formaction='../code/user/user-update.php'/>
+                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#usuarioUpdateModal"  src='../svg/pencil.svg'  formaction='../code/user/user-update.php'/>
                         <form method="post">
                             <input class='body-project--formbutton' type='image'  src='../svg/garbage.svg' value="<?= $usuario[0]; ?>" name="id" formaction='../code/user/user-delete.php'>
                         </form>

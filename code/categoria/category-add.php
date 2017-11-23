@@ -23,13 +23,15 @@ try {
             }else{
                 $_SESSION['erro'] = 'Erro ao adicionar a categoria';
                 die( print_r( sqlsrv_errors(), true));
+                header('Location: /management-page-structure/category-user-management.php');
             }
     							
 	   }
     }
 } catch (Exception $e) {
-    echo "<script> console.log('ERRO'); </script>";
+    $_SESSION['erro'] = 'Erro ao adicionar a categoria';
     die($e);
+    header('Location: /management-page-structure/category-user-management.php');
 }
 
 

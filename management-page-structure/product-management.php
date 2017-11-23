@@ -37,34 +37,39 @@
 <div class="container">
     <div class="row">
         <?php include('../db/bancodedados.php');
-		
-		session_start();
+
+        session_start();
         include('../db/bancodedados.php');
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];
 
-        if(isset($msg)){
+        if (isset($msg)) {
             echo "
-                <div class='container' style='left:23%'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $msg
+                <div class='container' style='display: flex; justify-content: space-around;'>
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: 25%;'> $msg
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
                     </div>
                 </div>
             ";
+            unset($_SESSION['msg']);
+            unset($msg);
         }
-        if(isset($erro)) {
+        if (isset($erro)) {
             echo "
-                <div class='container' style='left:23%'>
-                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $erro
+                <div class='container' style='display: flex; justify-content: space-around;'>
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: 25%;'> $erro
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
                     </div>
                 </div>
             ";
+            unset($_SESSION['erro']);
+            unset($erro);
         }
+
 
         try {
             $instrucaoSQL = "SELECT idProduto, nomeProduto, descontoPromocao, precProduto, descProduto, idCategoria, idUsuario, ativoProduto, qtdMinEstoque, imagem FROM  Produto";
@@ -76,17 +81,17 @@
         }
 
         while ($produtos = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
-            
+
             if (strlen($produtos[1]) >= 25) {
-                $produtos[1] = substr($produtos[1], 0, 25). '...';
-            }          
+                $produtos[1] = substr($produtos[1], 0, 25) . '...';
+            }
             $produtos[1] = utf8_encode((empty($produtos[1])) ? "Sem dados" : $produtos[1]);
             $produtos[2] = utf8_encode((empty($produtos[2])) ? "Sem dados" : $produtos[2]);
             $produtos[4] = utf8_encode((empty($produtos[4])) ? "Sem dados" : $produtos[4]);
-            $produtos[7] =($produtos[7] == 1) ? "Sim" : "Não";
+            $produtos[7] = ($produtos[7] == 1) ? "Sim" : "Não";
             $image64 = $produtos[9];
             $image64 = base64_encode($image64);
-            $image64 = "<img height='200px' weight='200px 'src=\"data:image/jpeg;base64,".$image64."\">";
+            $image64 = "<img height='200px' weight='200px 'src=\"data:image/jpeg;base64," . $image64 . "\">";
             ?>
 
             <div class="col-sm-6 col-md-3">
@@ -94,18 +99,25 @@
                     <?php echo $image64; ?>
                     <div class="card-block">
                         <h5 class="card-title"><?= $produtos[1] ?></h5>
-                        <p class="card-text"><strong>Id do Produto : &nbsp; &nbsp; </strong><?=  $produtos[0]; ?></p>
+                        <p class="card-text"><strong>Id do Produto : &nbsp; &nbsp; </strong><?= $produtos[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Preço : &nbsp; &nbsp;  </strong>$<?= round($produtos[3],2); ?></li>
-                        <li class="list-group-item"><strong>Desconto : &nbsp; &nbsp;  </strong>$<?= round($produtos[2],2); ?></li>
-                        <li class="list-group-item"><strong>Quantidade no Estoque : &nbsp; &nbsp;  </strong><?= $produtos[8]; ?></li>
-                        <li class="list-group-item"><strong>Produto Ativo : &nbsp; &nbsp;  </strong><?= $produtos[7]; ?></li>
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp; &nbsp;  </strong><?= $produtos[4]; ?></li>
+                        <li class="list-group-item"><strong>Preço : &nbsp;
+                                &nbsp; </strong>$<?= round($produtos[3], 2); ?></li>
+                        <li class="list-group-item"><strong>Desconto : &nbsp;
+                                &nbsp; </strong>$<?= round($produtos[2], 2); ?></li>
+                        <li class="list-group-item"><strong>Quantidade no Estoque : &nbsp;
+                                &nbsp; </strong><?= $produtos[8]; ?></li>
+                        <li class="list-group-item"><strong>Produto Ativo : &nbsp; &nbsp; </strong><?= $produtos[7]; ?>
+                        </li>
+                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp;
+                                &nbsp; </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg' formaction='../code/categoria/category-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg' formaction='../code/categoria/category-delete.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'
+                               formaction='../code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'
+                               formaction='../code/categoria/category-delete.php'/>
                     </div>
                 </div>
             </div>
@@ -115,51 +127,49 @@
     </div>
 </div>
 <div class="row">
-    <div class='box-container-add'>
-        <div class="modal fade" id="produtoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Novo Usuario</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST">
-                            <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Login:</label>
-                                <input type="text" class="form-control" id="recipient-name" name="loginUsuario">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="form-control-label">Senha:</label>
-                                <input type="password" class="form-control" id="recipient-name" name="senhaUsuario">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="form-control-label">Nome:</label>
-                                <input type="text" class="form-control" id="recipient-name" name="nomeUsuario">
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="form-control-label">Perfil:</label>
-                                <select name="perfilUsuario">
-                                    <option value="">Escolha</option>
-                                    <option value="A">Administrador</option>
-                                    <option value="C">Colaborador</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="form-control-label">Ativo:</label>
-                                <input type="checkbox" name="usuarioAtivo">
-                            </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <input type="submit" class="btn btn-danger" value="Adicionar nova categoria"
-                               name="btnGravar" formaction='../code/user/user-add.php'></input>
-                    </div>
-                    </form>
+    <div class="modal fade" id="produtoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Usuario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Login:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="loginUsuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Senha:</label>
+                            <input type="password" class="form-control" id="recipient-name" name="senhaUsuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Nome:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="nomeUsuario">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Perfil:</label>
+                            <select name="perfilUsuario">
+                                <option value="">Escolha</option>
+                                <option value="A">Administrador</option>
+                                <option value="C">Colaborador</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Ativo:</label>
+                            <input type="checkbox" name="usuarioAtivo">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <input type="submit" class="btn btn-danger" value="Adicionar nova categoria"
+                           name="btnGravar" formaction='../code/user/user-add.php'></input>
+                </div>
+                </form>
             </div>
         </div>
     </div>

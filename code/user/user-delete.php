@@ -26,15 +26,15 @@ try {
 
         if($rows_affected > 0){
             $_SESSION['msg'] = 'Usuário deletado com sucesso';
-            echo "<script> window.location.href = '/management-page-structure/user-management.php' </script>";	
+            header('Location: /management-page-structure/user-management.php');
         }else{
             $_SESSION['erro'] = 'Erro ao deletar o usuário';
-            die( print_r( sqlsrv_errors(), true));
+            header('Location: /management-page-structure/user-management.php');
         }
     }
 
 } catch (Exception $e) {
-    echo "<script> console.log('ERRO'); </script>";
     die($e);
+    header('Location: /management-page-structure/user-management.php');
 }
 ?>

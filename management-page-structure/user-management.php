@@ -26,8 +26,7 @@
             </div>
         </div>
         <div class="body-project--addbutton">
-            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#usuarioModal">Adicionar Novo
-                Usuário
+            <button class='btn btn-danger' type='submit' data-toggle="modal" data-target="#usuarioModal">Adicionar Novo Usuário</button>
         </div>
     </div>
 </div>
@@ -40,28 +39,35 @@
         include('../db/bancodedados.php');
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];
-        if(isset($msg)){
+
+        if (isset($msg)) {
             echo "
-                <div class='container' style='left:23%'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $msg
+                <div class='container' style='display: flex; justify-content: space-around;'>
+                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: 25%;'> $msg
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
                     </div>
                 </div>
             ";
+            unset($_SESSION['msg']);
+            unset($msg);
         }
-        if(isset($erro)) {
+        if (isset($erro)) {
             echo "
-                <div class='container' style='left:23%'>
-                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='width: 72%'> $erro
+                <div class='container' style='display: flex; justify-content: space-around;'>
+                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: 25%;'> $erro
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
                     </div>
                 </div>
             ";
+            unset($_SESSION['erro']);
+            unset($erro);
         }
+
+
         try {
             $instrucaoSQL = "SELECT idUsuario,loginUsuario,senhaUsuario,nomeUsuario,tipoPerfil, usuarioAtivo FROM Usuario";
             $consulta = sqlsrv_query($conn, $instrucaoSQL);
@@ -72,35 +78,81 @@
         while ($usuario = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
             $usuario[1] = utf8_encode((empty($usuario[1])) ? "Sem dados" : $usuario[1]);
             $usuario[2] = utf8_encode((empty($usuario[2])) ? "Sem dados" : $usuario[2]);
-            $usuario[5] =($usuario[5] == 1) ? "Sim" : "Não";
+            $usuario[5] = ($usuario[5] == 1) ? "Sim" : "Não";
             ?>
             <div class="col-sm-6 col-md-4">
                 <div class="card  mb-3">
                     <div class="card-block">
-                        <input class="card-title" name="nome" value="<?= $usuario[3] ?>" />
-                        <strong>Id do Usuário : </strong><input class="card-text" name="id" value="<?=  $usuario[0]; ?>" />
+                        <h5 class="card-title"><?= $usuario[3] ?></h5>
+                        <p class="card-text"><strong>Id do Usuário : &nbsp; &nbsp; </strong><?= $usuario[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-<<<<<<< HEAD
                         <li class="list-group-item"><strong>Login : &nbsp; &nbsp;</strong><?= $usuario[1]; ?></li>
                         <li class="list-group-item"><strong>Senha : &nbsp; &nbsp;</strong><?= $usuario[2]; ?></li>
-						<li class="list-group-item"><strong>Tipo : &nbsp; &nbsp;</strong><?= $usuario[4]; ?></li>
-						<li class="list-group-item"><strong>Ativo/Desativo :  &nbsp; &nbsp;</strong><?= $usuario[5]; ?></li>
-						
-=======
-                        <strong>Login  </strong><input class="list-group-item" name="login" value="<?= $usuario[1]; ?>" />
-                        <strong>Senha  </strong><input class="list-group-item" name="senha" value="<?= $usuario[2]; ?>" />
-                        <strong>Tipo  </strong><input class="list-group-item" name="perfil" value="<?= $usuario[2]; ?>" />
-                        <strong>Ativo/Desativo  </strong><input class="list-group-item" name="ativo" value="<?= $usuario[5]; ?>" /> 
->>>>>>> d0d9d8fe7a6485109acc5f9b513a8edd4251e6af
+                        <li class="list-group-item"><strong>Tipo : &nbsp; &nbsp;</strong><?= $usuario[4]; ?></li>
+                        <li class="list-group-item"><strong>Ativo/Desativo : &nbsp; &nbsp;</strong><?= $usuario[5]; ?>
+                        </li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'   formaction='../code/user/user-update.php'/>
-                        <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'  formaction='../code/user/user-delete.php'>
+                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#usuarioUpdateModal" src='../svg/pencil.svg'  formaction='../code/user/user-update.php'/>
+                        <form method="post">
+                            <input class='body-project--formbutton' type='image'  src='../svg/garbage.svg' formaction='../code/user/user-delete.php'>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="modal fade" id="usuarioUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST">git
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="form-control-label">ID:</label>
+                                            <input type="text" class="form-control" id="recipient-name" value=<?= $usuario[0]; ?> name="id">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="form-control-label">Login:</label>
+                                            <input type="text" class="form-control" id="recipient-name" value=<?= $usuario[1]; ?> name="login">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="form-control-label">Senha:</label>
+                                            <input type="password" class="form-control" id="recipient-name" value=<?= $usuario[2]; ?> name="senha">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="form-control-label">Nome:</label>
+                                            <input type="text" class="form-control" id="recipient-name" value=<?= $usuario[3]; ?> name="nome">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="form-control-label">Perfil:</label>
+                                            <select name="tipo">
+                                                <option value="">Escolha</option>
+                                                <option value="A">Administrador</option>
+                                                <option value="C">Colaborador</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="message-text" class="form-control-label">Ativo:</label>
+                                            <input type="checkbox" name="ativo">
+                                        </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <input type="submit" class="btn btn-danger" value="Editar" name="btnGravar"   formaction='../code/user/user-update.php'></input>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-			
 
             <?php
         }
@@ -108,55 +160,55 @@
 
     </div>
     <div class="row">
-        <div class='box-container-add'>
-            <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Novo Usuario</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form method="POST">
-                                <div class="form-group">
-                                    <label for="recipient-name" class="form-control-label">Login:</label>
-                                    <input type="text" class="form-control" id="recipient-name" name="loginUsuario">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="form-control-label">Senha:</label>
-                                    <input type="password" class="form-control" id="recipient-name" name="senhaUsuario">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="form-control-label">Nome:</label>
-                                    <input type="text" class="form-control" id="recipient-name" name="nomeUsuario">
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="form-control-label">Perfil:</label>
-                                    <select name="perfilUsuario">
-                                        <option value="">Escolha</option>
-                                        <option value="A">Administrador</option>
-                                        <option value="C">Colaborador</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="form-control-label">Ativo:</label>
-                                    <input type="checkbox" name="usuarioAtivo">
-                                </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                            <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnGravar" formaction='../code/user/user-add.php'></input>
-                        </div>
-                        </form>
+        <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Novo Usuario</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+                        <form method="POST">
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Login:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="loginUsuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label">Senha:</label>
+                                <input type="password" class="form-control" id="recipient-name" name="senhaUsuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label">Nome:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="nomeUsuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label">Perfil:</label>
+                                <select name="perfilUsuario">
+                                    <option value="">Escolha</option>
+                                    <option value="A">Administrador</option>
+                                    <option value="C">Colaborador</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label">Ativo:</label>
+                                <input type="checkbox" name="usuarioAtivo">
+                            </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <input type="submit" class="btn btn-danger" value="Adicionar nova categoria" name="btnGravar"
+                               formaction='../code/user/user-add.php'></input>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <?php include('../main-page-structure/import-javascript.php') ?>
 </body>

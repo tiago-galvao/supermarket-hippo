@@ -27,4 +27,3 @@ $('#usuarioModal').on('show.bs.modal', function (event) {
     modal.find('.modal-title').text('Novo Usuário ');
     modal.find('.modal-body input').val(recipient);
 })
-

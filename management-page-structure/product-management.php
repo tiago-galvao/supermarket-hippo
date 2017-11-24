@@ -59,7 +59,7 @@
         if (isset($erro)) {
             echo "
                 <div class='container' style='display: flex; justify-content: space-around;'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: auto;'> $erro
+                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: auto;'> $erro
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
@@ -114,9 +114,11 @@
                                 &nbsp; </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg' formaction='../code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'
+                               formaction='../code/categoria/category-update.php'/>
                         <form method="post">
-                            <input class='body-project--formbutton' type='image' src='../svg/garbage.svg' value="<?= $produtos[0]; ?>" name="id" formaction='../code/categoria/category-delete.php'/>
+                            <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'
+                                   value="<?= $produtos[0]; ?>" name="id"  formaction='../code/produto/product-delete.php'/>
                         </form>
                     </div>
                 </div>
@@ -132,48 +134,68 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Novo Usuario</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Novo Produto</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
+
+
                         <div class="form-group">
-                            <label for="recipient-name" class="form-control-label">Login:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="loginUsuario">
+                            <label for="recipient-name" class="form-control-label">Nome:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="nomeProduto" placeholder='EX: Produto Exemplo'>
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="form-control-label">Senha:</label>
-                            <input type="password" class="form-control" id="recipient-name" name="senhaUsuario">
+                            <label for="message-text" class="form-control-label">Desconto Promoção:</label>
+                            <input type="number" class="form-control" id="recipient-name" name="descontoPromocao"placeholder='EX: 1.00'>
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="form-control-label">Nome:</label>
-                            <input type="text" class="form-control" id="recipient-name" name="nomeUsuario">
+                            <label for="message-text" class="form-control-label">Preço:</label>
+                            <input type="number" class="form-control" id="recipient-name" name="precProduto" placeholder='EX: 1.00'>
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="form-control-label">Perfil:</label>
-                            <select name="perfilUsuario">
-                                <option value="">Escolha</option>
-                                <option value="A">Administrador</option>
-                                <option value="C">Colaborador</option>
-                            </select>
+                            <label for="message-text" class="form-control-label">Descrição:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="descProduto" placeholder='EX: Descrição para o produto'>
+                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <label for="message-text" class="form-control-label">Categoria:</label>-->
+<!--                            <select name="idCategoria">-->
+<!--                                <option value="">Escolha</option>-->
+<!--                                <option value="A">Administrador</option>-->
+<!--                                <option value="C">Colaborador</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Categoria:</label>
+                            <input type="text" class="form-control" id="recipient-name" value="1" name="idCategoria">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Usuário:</label>
+                            <input type="text" class="form-control" id="recipient-name" value="1" name="idUsuario">
                         </div>
                         <div class="form-group">
-                            <label for="message-text" class="form-control-label">Ativo:</label>
-                            <input type="checkbox" name="usuarioAtivo">
+                            <label for="message-text" class="form-control-label">Estoque:</label>
+                            <input type="number" class="form-control" id="recipient-name" name="qtdMinEstoque" placeholder='EX: 4'>
                         </div>
+                        <div class="input-group input-file" name="Fichier1">
+                            <input type="file" class="form-control" name="imagem"/>
+                            <span class="input-group-btn">
+    		            </span>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <input type="submit" class="btn btn-danger" value="Adicionar novo produto"
+                                   name="btnGravar" formaction='../code/produto/product-add.php'>
+                        </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <input type="submit" class="btn btn-danger" value="Adicionar nova categoria"
-                           name="btnGravar" formaction='../code/user/user-add.php'></input>
-                </div>
-                </form>
             </div>
         </div>
     </div>
-</div>
-<?php include('../main-page-structure/import-javascript.php') ?>
+    <?php include('../main-page-structure/import-javascript.php') ?>
 </body>
 </html>

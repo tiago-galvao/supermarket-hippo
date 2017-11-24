@@ -16,27 +16,27 @@ $deletar = "<script>document.write(deletar);</script>";
 try {
     if ($deletar == true) {
         unset($deletar);
-        $instrucaoSQL = "DELETE FROM Categoria WHERE idCategoria = ?";
+        $instrucaoSQL = "DELETE FROM Produto WHERE idProduto = ?";
         $params = array( $id );
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
         $rows_affected = sqlsrv_rows_affected($consulta);
 
         if($rows_affected > 0){
-            $_SESSION['msg'] = 'Categoria deletada com sucesso';
-			header('Location: /management-page-structure/category-user-management.php');	
+            $_SESSION['msg'] = 'Produto deletado com sucesso';
+			header('Location: /management-page-structure/product-management.php');
             
         }else{
-            $_SESSION['erro'] = 'Erro ao deletar a categoria';
-			header('Location: /management-page-structure/category-user-management.php');
+            $_SESSION['erro'] = 'Erro ao deletar o produto';
+			header('Location: /management-page-structure/product-management.php');
         }
 
     }else{
-		header('Location: /management-page-structure/category-user-management.php');
+		header('Location: /management-page-structure/product-management.php');
 	}
 
 } catch (Exception $e) {
     die($e);
-    $_SESSION['erro'] = 'Erro ao deletar a categoria';
-	header('Location: /management-page-structure/category-user-management.php');
+    $_SESSION['erro'] = 'Erro ao deletar o produto';
+	header('Location: /management-page-structure/product-management.php');
 }
 ?>

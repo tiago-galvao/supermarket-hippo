@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -75,10 +75,12 @@
         } catch (Exception $e) {
             die($e);
         }
+		$i= 0;
         while ($usuario = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
             $usuario[1] = utf8_encode((empty($usuario[1])) ? "Sem dados" : $usuario[1]);
             $usuario[2] = utf8_encode((empty($usuario[2])) ? "Sem dados" : $usuario[2]);
             $usuario[5] = ($usuario[5] == 1) ? "Sim" : "Não";
+			$i++;
             ?>
             <div class="col-sm-6 col-md-4">
                 <div class="card  mb-3">
@@ -93,8 +95,9 @@
                         <li class="list-group-item"><strong>Ativo/Desativo : &nbsp; &nbsp;</strong><?= $usuario[5]; ?>
                         </li>
                     </ul>
+					
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#usuarioUpdateModal"  src='../svg/pencil.svg'  formaction='../code/user/user-update.php'/>
+                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#usuarioUpdateModal<?php echo $i;?>" data-id="<?= $dataUpdate = $usuario; ?>"  src='../svg/pencil.svg'/>
                         <form method="post">
                             <input class='body-project--formbutton' type='image'  src='../svg/garbage.svg' value="<?= $usuario[0]; ?>" name="id" formaction='../code/user/user-delete.php'>
                         </form>
@@ -102,7 +105,7 @@
 
 
                     <div class="row">
-                        <div class="modal fade" id="usuarioUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="usuarioUpdateModal<?php echo $i;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -115,31 +118,28 @@
                                         <form method="POST">
                                             <div class="form-group">
                                                 <label for="recipient-name" class="form-control-label">ID:</label>
-                                                <span class="form-control"> <?= $usuario[0]; ?></span>
+												<input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[0]; ?>" name="id">
                                             </div>
                                             <div class="form-group">
                                                 <label for="recipient-name" class="form-control-label">Login:</label>
-                                                <input type="text" class="form-control" id="recipient-name" value="<?= $usuario[1]; ?>" name="login">
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[1]; ?>" name="login">
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="form-control-label">Senha:</label>
-                                                <input type="password" class="form-control" id="recipient-name" value="<?= $usuario[2]; ?>" name="senha">
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[2]; ?>" name="senha">
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="form-control-label">Nome:</label>
-                                                <input type="text" class="form-control" id="recipient-name" value="<?= $usuario[3]; ?>" name="nome">
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[3]; ?>" name="nome">
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="form-control-label">Perfil:</label>
-                                                <select name="tipo">
-                                                    <option value="">Escolha</option>
-                                                    <option value="A">Administrador</option>
-                                                    <option value="C">Colaborador</option>
-                                                </select>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[4]; ?>" name="tipo">
                                             </div>
                                             <div class="form-group">
                                                 <label for="message-text" class="form-control-label">Ativo:</label>
-                                                <input type="checkbox" name="ativo">
+							<input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[5] = ($dataUpdate[5] == "Sim") ? 1 : 0; ?>" name="ativo">					
+												
                                             </div>
                                     </div>
 

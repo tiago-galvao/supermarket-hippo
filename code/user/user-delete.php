@@ -19,6 +19,7 @@ $deletar = "<script>document.write(deletar);</script>";
 
 try {
     if ($deletar == true) {
+        unset($deletar);
         $instrucaoSQL = "DELETE FROM Usuario WHERE idUsuario = ?";
         $params = array( $id );
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
@@ -31,7 +32,9 @@ try {
             $_SESSION['erro'] = 'Erro ao deletar o usuário';
             header('Location: /management-page-structure/user-management.php');
         }
-    }
+    }else{
+		 header('Location: /management-page-structure/user-management.php');
+	}
 
 } catch (Exception $e) {
     die($e);

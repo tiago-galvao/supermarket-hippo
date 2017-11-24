@@ -60,7 +60,7 @@
         if (isset($erro)) {
             echo "
                <div class='container' style='display: flex; justify-content: space-around;'>
-                    <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: auto;'> $erro
+                    <div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\" style='display: flex; height: 51px; width: auto;'> $erro
                         <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                             <span aria-hidden=\"true\">&times;</span>
                         </button>
@@ -78,11 +78,12 @@
         } catch (Exception $e) {
             die($e);
         }
-
+		$i= 0;
         while ($categorias = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
 
             $categorias[1] = utf8_encode((empty($categorias[1])) ? "Sem dados" : $categorias[1]);
             $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
+			$i++;
             ?>
             <div class="col-sm-6 col-md-3">
                 <div class="card  mb-3">
@@ -95,11 +96,48 @@
                                 &nbsp; </strong><?= $categorias[2]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'  formaction='../code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#categoriaUpdateModal<?php echo $i;?>" data-id="<?= $dataUpdate = $categorias; ?>"  src='../svg/pencil.svg'/>
                         <form method="post">
                             <input class='body-project--formbutton' type='image' src='../svg/garbage.svg' value="<?= $categorias[0]; ?>" name="id" formaction='../code/categoria/category-delete.php'>
                         </form>
                     </div>
+					
+					                    <div class="row">
+                        <div class="modal fade" id="categoriaUpdateModal<?php echo $i;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Editar Usuario</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">ID:</label>
+												<input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[0]; ?>" name="id">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Nome:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[1]; ?>" name="nome">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Descrição:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[2]; ?>" name="desc">
+                                            </div>	
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <input type="submit" class="btn btn-danger" value="Editar" name="btnGravar"   formaction='../code/categoria/category-update.php'>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
                 </div>
             </div>
             <?php

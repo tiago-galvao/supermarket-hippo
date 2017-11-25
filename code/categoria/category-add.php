@@ -12,8 +12,9 @@ try {
 		if(!empty($nome) &&	!empty($desc)) {
 			
 			$instrucaoSQL = "INSERT INTO Categoria (nomeCategoria, descCategoria) VALUES (?,?)";
+            $nome = utf8_decode($nome);
+            $desc = utf8_decode($desc);
 			$params = array($nome, $desc);
-			$nome = utf8_decode($nome);
             $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
        	    $rows_affected = sqlsrv_rows_affected($consulta);
 

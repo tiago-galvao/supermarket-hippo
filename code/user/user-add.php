@@ -16,12 +16,12 @@ try {
 			!empty($senha)) {
             
 			$instrucaoSQL = "INSERT INTO Usuario (loginUsuario, nomeUsuario, senhaUsuario, tipoPerfil, usuarioAtivo) VALUES (?,?,?,?,?)";
+            $nome = utf8_decode($nome);
+            $senha = utf8_decode($senha);
 			$params = array($login, $nome, $senha, $perfil, $ativo);
-			$nome = utf8_decode($nome);
             $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
        	    $rows_affected = sqlsrv_rows_affected($consulta);			
 			$ativo = isset($ativo) ? true : false;
-			$nome = utf8_decode($nome);
         
             if($rows_affected > 0){
                 $_SESSION['msg'] = 'Usuário adicionado com sucesso';

@@ -39,7 +39,12 @@
         <?php include('../db/bancodedados.php');
 
         session_start();
-        include('../db/bancodedados.php');
+
+        if(!isset($_SESSION['idUsuario'])){
+            session_destroy();
+            header('Location: ../index.php');
+        }
+
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];
 
@@ -79,7 +84,7 @@
         } catch (Exception $e) {
             die($e);
         }
-
+        $i= 0;
         while ($produtos = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
 
             if (strlen($produtos[1]) >= 25) {
@@ -92,6 +97,7 @@
             $image64 = $produtos[9];
             $image64 = base64_encode($image64);
             $image64 = "<img height='200px' weight='200px 'src=\"data:image/jpeg;base64," . $image64 . "\">";
+            $i++;
             ?>
 
             <div class="col-sm-6 col-md-3">
@@ -103,9 +109,9 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Preço : &nbsp;
-                                &nbsp; </strong>$<?= round($produtos[3], 2); ?></li>
+                                &nbsp; </strong>$<?= number_format($produtos[3],2, '.', ''); ?></li>
                         <li class="list-group-item"><strong>Desconto : &nbsp;
-                                &nbsp; </strong>$<?= round($produtos[2], 2); ?></li>
+                                &nbsp; </strong>$<?= number_format($produtos[2],2, '.', ''); ?></li>
                         <li class="list-group-item"><strong>Quantidade no Estoque : &nbsp;
                                 &nbsp; </strong><?= $produtos[8]; ?></li>
                         <li class="list-group-item"><strong>Produto Ativo : &nbsp; &nbsp; </strong><?= $produtos[7]; ?>
@@ -114,13 +120,102 @@
                                 &nbsp; </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
-                        <input class='body-project--formbutton' type='image' src='../svg/pencil.svg'
-                               formaction='../code/categoria/category-update.php'/>
+                        <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#produtoUpdateModal<?php echo $i;?>" data-id="<?= $dataUpdate = $produtos; ?>"  src='../svg/pencil.svg'/>
                         <form method="post">
                             <input class='body-project--formbutton' type='image' src='../svg/garbage.svg'
                                    value="<?= $produtos[0]; ?>" name="id"  formaction='../code/produto/product-delete.php'/>
                         </form>
                     </div>
+
+                    <div class="row">
+                        <div class="modal fade" id="produtoUpdateModal<?php echo $i;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Editar Produto</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="POST">
+
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">ID:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[0]; ?>" name="idProduto" placeholder='EX: Produto Exemplo'>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="form-control-label">Nome:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[1]; ?>" name="nomeProduto" placeholder='EX: Produto Exemplo'>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Desconto Promoção:</label>
+                                                <input type="number" step="any" class="form-control" id="recipient-name" value="<?= $dataUpdate[2]; ?>" name="descontoPromocao" placeholder='EX: 1.00'>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Preço:</label>
+                                                <input type="number" step="any" class="form-control" id="recipient-name" value="<?= $dataUpdate[3]; ?>" name="precProduto" placeholder='EX: 1.00'>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Descrição:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[4]; ?>" name="descProduto" placeholder='EX: Descrição para o produto'>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Categoria:</label>
+                                                <select id="recipient-name"  name="idCategoria">
+                                                    <option value="">Escolha</option>
+                                                    <?php
+                                                    $c = sqlsrv_query($conn, 'SELECT idCategoria, nomeCategoria FROM Categoria');
+                                                    while($cat = sqlsrv_fetch_array($c)){
+                                                        $cat['nomeCategoria'] = utf8_encode($cat['nomeCategoria']);
+                                                        $categorias[$cat['idCategoria']] = $cat;
+                                                    }
+                                                    foreach ($categorias as $idCategoria => $dadosCategoria) {
+                                                        $utf_nomeCategoria = $dadosCategoria['nomeCategoria'];
+                                                        echo "<option value='$idCategoria'>$utf_nomeCategoria</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Usuário:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[6]; ?>" name="idUsuario">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Ativo/Desativado:</label>
+                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[7]; ?>" name="ativoProduto">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="message-text" class="form-control-label">Estoque:</label>
+                                                <input type="number" class="form-control" id="recipient-name" value="<?= $dataUpdate[8]; ?>" name="qtdMinEstoque" placeholder='EX: 4'>
+                                            </div>
+
+                                            <div class="input-group input-file" name="Fichier1">
+                                                <input type="file" class="form-control" name="imagem"/>
+                                                <span class="input-group-btn"> </span>
+                                            </div>
+
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                        <input type="submit" class="btn btn-danger" value="Editar" name="btnGravar"   formaction='../code/produto/product-update.php'>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
             <?php
@@ -147,45 +242,55 @@
                             <label for="recipient-name" class="form-control-label">Nome:</label>
                             <input type="text" class="form-control" id="recipient-name" name="nomeProduto" placeholder='EX: Produto Exemplo'>
                         </div>
+
                         <div class="form-group">
                             <label for="message-text" class="form-control-label">Desconto Promoção:</label>
-                            <input type="number" class="form-control" id="recipient-name" name="descontoPromocao"placeholder='EX: 1.00'>
+                            <input type="number" step="any" class="form-control" id="recipient-name" name="descontoPromocao"placeholder='EX: 1.00'>
                         </div>
+
                         <div class="form-group">
                             <label for="message-text" class="form-control-label">Preço:</label>
-                            <input type="number" class="form-control" id="recipient-name" name="precProduto" placeholder='EX: 1.00'>
+                            <input type="number" step="any" class="form-control" id="recipient-name" name="precProduto" placeholder='EX: 1.00'>
                         </div>
+
                         <div class="form-group">
                             <label for="message-text" class="form-control-label">Descrição:</label>
                             <input type="text" class="form-control" id="recipient-name" name="descProduto" placeholder='EX: Descrição para o produto'>
                         </div>
-<!--                        <div class="form-group">-->
-<!--                            <label for="message-text" class="form-control-label">Categoria:</label>-->
-<!--                            <select name="idCategoria">-->
-<!--                                <option value="">Escolha</option>-->
-<!--                                <option value="A">Administrador</option>-->
-<!--                                <option value="C">Colaborador</option>-->
-<!--                            </select>-->
-<!--                        </div>-->
 
                         <div class="form-group">
                             <label for="message-text" class="form-control-label">Categoria:</label>
-                            <input type="text" class="form-control" id="recipient-name" value="1" name="idCategoria">
+                            <select id="recipient-name"  name="idCategoria">
+                            <option value="">Escolha</option>
+                                <?php
+                                    $c = sqlsrv_query($conn, 'SELECT idCategoria, nomeCategoria FROM Categoria');
+                                    while($cat = sqlsrv_fetch_array($c)){
+                                        $cat['nomeCategoria'] = utf8_encode($cat['nomeCategoria']);
+                                        $categorias[$cat['idCategoria']] = $cat;
+                                    }
+                                    foreach ($categorias as $idCategoria => $dadosCategoria) {
+                                        $utf_nomeCategoria = $dadosCategoria['nomeCategoria'];
+                                        echo "<option value='$idCategoria'>$utf_nomeCategoria</option>";
+                                    }
+                                ?>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="message-text" class="form-control-label">Usuário:</label>
                             <input type="text" class="form-control" id="recipient-name" value="1" name="idUsuario">
                         </div>
+
                         <div class="form-group">
                             <label for="message-text" class="form-control-label">Estoque:</label>
                             <input type="number" class="form-control" id="recipient-name" name="qtdMinEstoque" placeholder='EX: 4'>
                         </div>
+
                         <div class="input-group input-file" name="Fichier1">
                             <input type="file" class="form-control" name="imagem"/>
-                            <span class="input-group-btn">
-    		            </span>
+                            <span class="input-group-btn"> </span>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             <input type="submit" class="btn btn-danger" value="Adicionar novo produto"

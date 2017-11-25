@@ -1,3 +1,4 @@
+
 <header class="header-navbar">
 
     <div class="container-fluid">
@@ -10,8 +11,10 @@
             </div>
         </div>
         <div class="header-navbar--itens">
-            <p class="header-navbar--user">Tiago Galvão</p>
-            <button type="button" class="btn btn-danger">Sair</button>
+            <p class="header-navbar--user"><?=  session_start(); echo $_SESSION['nomeUsuario']; ?></p>
+            <form>
+                <button type="submit" class="btn btn-danger" formaction="../code/user/user-logout.php">Sair</button>
+            </form>
         </div>
     </div>
 

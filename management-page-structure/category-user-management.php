@@ -40,7 +40,11 @@
         <?php include('../db/bancodedados.php');
 
         session_start();
-        include('../db/bancodedados.php');
+
+        if(!isset($_SESSION['idUsuario'])){
+            session_destroy();
+            header('Location: ../index.php');
+        }
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];
 
@@ -102,7 +106,7 @@
                         </form>
                     </div>
 					
-					                    <div class="row">
+					   <div class="row">
                         <div class="modal fade" id="categoriaUpdateModal<?php echo $i;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

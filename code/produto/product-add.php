@@ -28,19 +28,14 @@ try {
                 $_SESSION['erro'] = 'Imagem com o formato inválido';
                 header('Location: /management-page-structure/product-management.php');
             }
-
-//            if ($tamanho > 2048) {
-//                $_SESSION['erro'] = 'A imagem deve possuir no máximo 2 MB';
-//                header('Location: /management-page-structure/product-management.php');
-//            }
 			
 			$instrucaoSQL = "INSERT INTO Produto (nomeProduto, descontoPromocao,precProduto,descProduto,idCategoria,idUsuario,ativoProduto,qtdMinEstoque,imagem) VALUES (?,?,?,?,?,?,?,?,?)";
 
             $nomeProduto = utf8_decode($nomeProduto);
             $descProduto = utf8_decode($descProduto);
+            $precProduto = number_format($precProduto,2, '.', '');
+            $descProduto = number_format($descProduto,2, '.', '');
             $ativoProduto = isset($ativo) ? true : false;
-
-
 
 			$params = array($nomeProduto, $descontoPromocao, $precProduto, $descProduto, $idCategoria, $idUsuario, $ativoProduto, $qtdMinEstoque,$fileParaDB);
 			$consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
@@ -51,10 +46,8 @@ try {
                 $_SESSION['msg'] = 'Produto adicionado com sucesso';
                 header('Location: /management-page-structure/product-management.php');
             }else{
-//                $_SESSION['erro'] = 'Erro ao adicionar o produto';
-                var_dump($consulta);
-                var_dump($params);
-                sqlsrv_errors($consulta);
+                $_SESSION['erro'] = 'Erro ao adicionar o produto';
+                header('Location: /management-page-structure/product-management.php');
             }
     							
 	   }else{

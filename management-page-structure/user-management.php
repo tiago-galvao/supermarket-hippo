@@ -36,6 +36,12 @@
 
         <?php
         session_start();
+
+        if(!isset($_SESSION['idUsuario'])){
+            session_destroy();
+            header('Location: ../index.php');
+        }
+
         include('../db/bancodedados.php');
         $msg = $_SESSION['msg'];
         $erro = $_SESSION['erro'];

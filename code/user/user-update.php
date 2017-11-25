@@ -20,8 +20,6 @@ $alterar = "<script>document.write(alterar);</script>";
 try {
 	if ($alterar == true) {
         $instrucaoSQL = "UPDATE Usuario SET loginUsuario = ?, nomeUsuario = ?, senhaUsuario = ?, tipoPerfil = ?, usuarioAtivo = ? WHERE idUsuario = ?";
-        $nome = utf8_decode($nome);
-        $senha = utf8_decode($senha);
         $params = array($login, $nome, $senha, $perfil, $ativo, $id);
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
         $rows_affected = sqlsrv_rows_affected($consulta);

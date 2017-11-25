@@ -89,15 +89,14 @@
             $categorias[2] = utf8_encode((empty($categorias[2])) ? "Sem dados" : $categorias[2]);
 			$i++;
             ?>
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 box-info">
                 <div class="card  mb-3">
                     <div class="card-block">
-                        <h5 class="card-title"><?= $categorias[1] ?></h5>
-                        <p class="card-text"><strong>Id da Categoria : &nbsp; &nbsp;</strong><?= $categorias[0]; ?></p>
+                        <h5 class="card-title box-info--text"><?= $categorias[1] ?></h5>
+                        <p class="card-text box-info--text"><strong>Id da Categoria : &nbsp; &nbsp;</strong><?= $categorias[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp;
-                                &nbsp; </strong><?= $categorias[2]; ?></li>
+                        <li class="list-group-item box-info--text" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp; &nbsp; </strong><?= $categorias[2]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
                         <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#categoriaUpdateModal<?php echo $i;?>" data-id="<?= $dataUpdate = $categorias; ?>"  src='../svg/pencil.svg'/>

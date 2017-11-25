@@ -15,7 +15,6 @@ $deletar = "<script>document.write(deletar);</script>";
 
 try {
     if ($deletar == true) {
-        unset($deletar);
         $instrucaoSQL = "DELETE FROM Categoria WHERE idCategoria = ?";
         $params = array( $id );
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);

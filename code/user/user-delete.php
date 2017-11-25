@@ -19,7 +19,6 @@ $deletar = "<script>document.write(deletar);</script>";
 
 try {
     if ($deletar == true) {
-        unset($deletar);
         $instrucaoSQL = "DELETE FROM Usuario WHERE idUsuario = ?";
         $params = array( $id );
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);

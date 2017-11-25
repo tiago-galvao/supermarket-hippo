@@ -86,7 +86,11 @@
         }
         $i= 0;
         while ($produtos = sqlsrv_fetch_array($consulta, SQLSRV_FETCH_NUMERIC)) {
+            ob_start();
 
+		    ob_flush();
+			flush();
+		
             if (strlen($produtos[1]) >= 25) {
                 $produtos[1] = substr($produtos[1], 0, 25) . '...';
             }
@@ -100,24 +104,23 @@
             $i++;
             ?>
 
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 box-info">
                 <div class="card  mb-3">
                     <?php echo $image64; ?>
                     <div class="card-block">
-                        <h5 class="card-title"><?= $produtos[1] ?></h5>
-                        <p class="card-text"><strong>Id do Produto : &nbsp; &nbsp; </strong><?= $produtos[0]; ?></p>
+                        <h5 class="card-title box-info--text"><?= $produtos[1] ?></h5>
+                        <p class="card-text box-info--text"><strong>Id do Produto : &nbsp; &nbsp; </strong><?= $produtos[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Preço : &nbsp;
+                        <li class="list-group-item box-info--text"><strong>Preço : &nbsp;
                                 &nbsp; </strong>$<?= number_format($produtos[3],2, '.', ''); ?></li>
-                        <li class="list-group-item"><strong>Desconto : &nbsp;
+                        <li class="list-group-item box-info--text"><strong>Desconto : &nbsp;
                                 &nbsp; </strong>$<?= number_format($produtos[2],2, '.', ''); ?></li>
-                        <li class="list-group-item"><strong>Quantidade no Estoque : &nbsp;
+                        <li class="list-group-item box-info--text"><strong>Quantidade no Estoque : &nbsp;
                                 &nbsp; </strong><?= $produtos[8]; ?></li>
-                        <li class="list-group-item"><strong>Produto Ativo : &nbsp; &nbsp; </strong><?= $produtos[7]; ?>
+                        <li class="list-group-item box-info--text"><strong>Produto Ativo : &nbsp; &nbsp; </strong><?= $produtos[7]; ?>
                         </li>
-                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp;
-                                &nbsp; </strong><?= $produtos[4]; ?></li>
+                        <li class="list-group-item" style="overflow: auto; height: 230px"><strong>Descrição : &nbsp; &nbsp; </strong><?= $produtos[4]; ?></li>
                     </ul>
                     <div class="card-footer" style="display: flex; justify-content: space-between;">
                         <input class='body-project--formbutton' type='image' data-toggle="modal" data-target="#produtoUpdateModal<?php echo $i;?>" data-id="<?= $dataUpdate = $produtos; ?>"  src='../svg/pencil.svg'/>
@@ -181,11 +184,6 @@
                                                     }
                                                     ?>
                                                 </select>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="message-text" class="form-control-label">Usuário:</label>
-                                                <input type="text" class="form-control" id="recipient-name" value="<?= $dataUpdate[6]; ?>" name="idUsuario">
                                             </div>
 
                                             <div class="form-group">

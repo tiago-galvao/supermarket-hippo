@@ -7,11 +7,11 @@
         </div>
         <div class="header-navbar--searchfor">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Pesquise por.." aria-label="Search for...">
+                <input type="text" id="filtro" class="form-control" placeholder="Pesquise por.." aria-label="Search for...">
             </div>
         </div>
         <div class="header-navbar--itens">
-            <p class="header-navbar--user"><?=  session_start(); echo $_SESSION['nomeUsuario']; ?></p>
+            <p class="header-navbar--user"><?php  session_start(); echo $_SESSION['nomeUsuario']; ?></p>
             <form>
                 <button type="submit" class="btn btn-danger" formaction="../code/user/user-logout.php">Sair</button>
             </form>

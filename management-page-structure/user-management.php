@@ -88,17 +88,17 @@
             $usuario[5] = ($usuario[5] == 1) ? "Sim" : "Não";
 			$i++;
             ?>
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-6 col-md-4 box-info">
                 <div class="card  mb-3">
                     <div class="card-block">
-                        <h5 class="card-title"><?= $usuario[3] ?></h5>
-                        <p class="card-text"><strong>Id do Usuário : &nbsp; &nbsp; </strong><?= $usuario[0]; ?></p>
+                        <h5 class="card-title box-info--text"><?= $usuario[3] ?></h5>
+                        <p class="card-text box-info--text"><strong>Id do Usuário : &nbsp; &nbsp; </strong><?= $usuario[0]; ?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong>Login : &nbsp; &nbsp;</strong><?= $usuario[1]; ?></li>
-                        <li class="list-group-item"><strong>Senha : &nbsp; &nbsp;</strong><?= $usuario[2]; ?></li>
-                        <li class="list-group-item"><strong>Tipo : &nbsp; &nbsp;</strong><?= $usuario[4]; ?></li>
-                        <li class="list-group-item"><strong>Ativo/Desativo : &nbsp; &nbsp;</strong><?= $usuario[5]; ?>
+                        <li class="list-group-item box-info--text"><strong>Login : &nbsp; &nbsp;</strong><?= $usuario[1]; ?></li>
+                        <li class="list-group-item box-info--text"><strong>Senha : &nbsp; &nbsp;</strong><?= $usuario[2]; ?></li>
+                        <li class="list-group-item box-info--text"><strong>Tipo : &nbsp; &nbsp;</strong><?= $usuario[4]; ?></li>
+                        <li class="list-group-item box-info--text"><strong>Ativo/Desativo : &nbsp; &nbsp;</strong><?= $usuario[5]; ?>
                         </li>
                     </ul>
 					

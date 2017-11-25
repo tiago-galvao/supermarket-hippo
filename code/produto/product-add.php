@@ -7,7 +7,7 @@ $descontoPromocao = $_POST['descontoPromocao'];
 $precProduto = $_POST['precProduto'];
 $descProduto = $_POST['descProduto'];
 $idCategoria = $_POST['idCategoria'];
-$idUsuario = $_POST['idUsuario'];
+$idUsuario = $_SESSION['idUsuario'];
 $qtdMinEstoque = $_POST['qtdMinEstoque'];
 
 //Cadastrar Nova Categoria

@@ -268,3 +268,7 @@ a:active{
     background-size: cover;
     background-color: #1b1e21;
 }
+
+.invisivel{
+	display:none;
+}

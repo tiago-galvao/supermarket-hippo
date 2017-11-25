@@ -36,7 +36,7 @@ if(!empty($login) && !empty($senha)){
         }
 
 
-        header('Location: /management-page-structure/category-user-management.php');
+        header('Location: management-page-structure/category-user-management.php');
 
     }
 }

@@ -8,7 +8,7 @@ $descontoPromocao = $_POST['descontoPromocao'];
 $precProduto = $_POST['precProduto'];
 $descProduto = $_POST['descProduto'];
 $idCategoria = $_POST['idCategoria'];
-$idUsuario = $_POST['idUsuario'];
+$idUsuario = $_SESSION['idUsuario'];
 $qtdMinEstoque = $_POST['qtdMinEstoque'];
 $ativoProduto = $_POST['ativoProduto'];
 
@@ -36,7 +36,7 @@ try {
         $nomeProduto = utf8_decode($nomeProduto);
         $descProduto = utf8_decode($descProduto);
         $precProduto = number_format($precProduto,2, '.', '');
-        $descProduto = number_format($descProduto,2, '.', '');
+        $descontoPromocao = number_format($descontoPromocao,2, '.', '');
         $ativoProduto = ($ativo=='Sim') ? true : false;
 
         $params = array($nomeProduto, $descontoPromocao, $precProduto, $descProduto, $idCategoria, $idUsuario, $ativoProduto, $qtdMinEstoque,$fileParaDB,$idProduto);
@@ -53,21 +53,23 @@ try {
         }
 
     }else{
+		
         $instrucaoSQL = "UPDATE Produto SET nomeProduto = ?, descontoPromocao = ?,precProduto = ?,descProduto = ?,idCategoria = ?,idUsuario = ?,ativoProduto = ?,qtdMinEstoque = ? WHERE idProduto = ?";
 
         $nomeProduto = utf8_decode($nomeProduto);
         $descProduto = utf8_decode($descProduto);
         $precProduto = number_format($precProduto,2, '.', '');
-        $descProduto = number_format($descProduto,2, '.', '');
+        $descontoPromocao = number_format($descontoPromocao,2, '.', '');
         $ativoProduto = ($ativo=='Sim') ? true : false;
 
         $params = array($nomeProduto, $descontoPromocao, $precProduto, $descProduto, $idCategoria, $idUsuario, $ativoProduto, $qtdMinEstoque,$idProduto);
+		var_dump($params);
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
 
         $rows_affected = sqlsrv_rows_affected($consulta);
 
         if($rows_affected > 0){
-            $_SESSION['msg'] = 'Produto editar com sucesso';
+            $_SESSION['msg'] = 'Produto editado com sucesso';
             header('Location: /management-page-structure/product-management.php');
         }else{
             $_SESSION['erro'] = 'Erro ao editar o produto';

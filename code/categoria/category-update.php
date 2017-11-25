@@ -8,8 +8,6 @@ $desc = $_POST['desc'];
 
 try {
         $instrucaoSQL = "UPDATE Categoria SET nomeCategoria = ?, descCategoria = ? WHERE idCategoria = ?";
-        $nome = utf8_decode($nome);
-        $desc = utf8_decode($desc);
         $params = array( $nome, $desc, $id );
         $consulta = sqlsrv_query($conn, $instrucaoSQL, $params);
         $rows_affected = sqlsrv_rows_affected($consulta);

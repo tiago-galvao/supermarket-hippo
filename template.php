@@ -10,7 +10,7 @@
 
 
 
-<div class="container" style="top: 108px;">
+<div class="container" style="top: 108px; left: 100px;">
     <?php
     session_start();
     $erro = $_SESSION['erro'];

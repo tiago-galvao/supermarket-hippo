@@ -35,7 +35,7 @@
                 <form method="post" class="form-signin">
                     <input type="text" class="form-control" name="login" placeholder="Email" required autofocus>
                     <input type="password" class="form-control" name="senha" placeholder="Senha" required>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit"> Sign in</button>
+                    <button class="btn btn-danger btn-block" type="submit"> Sign in</button>
                     <label class="checkbox pull-left">
                         <input type="checkbox" value="remember-me">    Lembre-me
                     </label>

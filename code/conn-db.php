@@ -9,4 +9,5 @@
     if (!$db = odbc_connect($dsn, $db_user, $db_pass)) {
         echo 'Erro ao conctar ao banco de dados';
     }
+        
 ?>
